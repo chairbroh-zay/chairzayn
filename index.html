@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        /* ===== ROOT VARIABLES ===== */
+        /* ===== ROOT VARIABLES (Sama Seperti Sebelumnya) ===== */
         :root {
             --bg-primary: #000000;
             --bg-secondary: #0A0A0A;
@@ -581,7 +581,7 @@
         }
         .floating-icons span {
             position: absolute;
-            font-size: 16px;
+            font-size: 18px;
             animation: floatIcon 6s ease-in-out infinite;
             opacity: 0.5;
             color: var(--gradient-start);
@@ -1571,7 +1571,7 @@
         }
 
         // ============================================================
-        // RENDER HOME
+        // RENDER HOME (IKON VARIATIF)
         // ============================================================
         function renderHome() {
             const h = data.home;
@@ -1582,12 +1582,12 @@
                             <div class="photo-wrapper tilt-effect" id="photoWrapper">
                                 <img src="fotoprofile.jpg" alt="Foto ${h.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(h.name)}&size=280&background=0A0A0A&color=00BCD4&bold=true&rounded=false'" />
                                 <div class="floating-icons">
-                                    <span><i class="fab fa-python"></i></span>
-                                    <span><i class="fas fa-atom"></i></span>
-                                    <span><i class="fab fa-linux"></i></span>
-                                    <span><i class="fas fa-globe"></i></span>
-                                    <span><i class="fas fa-satellite-dish"></i></span>
-                                    <span><i class="fas fa-tools"></i></span>
+                                    <span><i class="fas fa-code"></i></span>
+                                    <span><i class="fas fa-cloud"></i></span>
+                                    <span><i class="fas fa-database"></i></span>
+                                    <span><i class="fas fa-microchip"></i></span>
+                                    <span><i class="fas fa-server"></i></span>
+                                    <span><i class="fas fa-shield-halved"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -1721,7 +1721,7 @@
         }
 
         // ============================================================
-        // RENDER ABOUT
+        // RENDER ABOUT (IKON VARIATIF)
         // ============================================================
         function renderAbout() {
             const a = data.about;
@@ -1745,7 +1745,7 @@
                                 ${(a.hardSkills || []).map(s => `
                                     <div class="skill-item">
                                         <div class="skill-label">
-                                            <span><i class="fas fa-network-wired"></i> ${s.name}</span>
+                                            <span>${s.name}</span>
                                             <span class="skill-percent">${s.percent}%</span>
                                         </div>
                                         <div class="skill-bar">
@@ -1757,7 +1757,7 @@
                             <div>
                                 <h4><i class="fas fa-brain"></i> Soft Skill</h4>
                                 <div class="soft-skills">
-                                    ${(a.softSkills || []).map(s => `<span><i class="fas fa-bolt"></i> ${s}</span>`).join('')}
+                                    ${(a.softSkills || []).map(s => `<span><i class="fas fa-zap"></i> ${s}</span>`).join('')}
                                 </div>
                             </div>
                         </div>
@@ -1767,7 +1767,7 @@
         }
 
         // ============================================================
-        // RENDER PROJECTS
+        // RENDER PROJECTS (IKON VARIATIF)
         // ============================================================
         function renderProjects() {
             const projects = data.projects || [];
@@ -1809,7 +1809,7 @@
                                     <div class="project-card reveal">
                                         <div class="glow-border"></div>
                                         <div class="project-thumb">
-                                            ${p.image ? `<img src="${p.image}" alt="${p.title}" />` : `<i class="fas fa-network-wired"></i>`}
+                                            ${p.image ? `<img src="${p.image}" alt="${p.title}" />` : `<i class="fas fa-sitemap"></i>`}
                                         </div>
                                         <div class="project-date"><i class="far fa-calendar-alt"></i> ${p.date || 'TKJ'}</div>
                                         <h4>${p.title}</h4>
@@ -1830,7 +1830,7 @@
                                     <div class="project-card reveal">
                                         <div class="glow-border"></div>
                                         <div class="project-thumb">
-                                            ${p.image ? `<img src="${p.image}" alt="${p.title}" />` : `<i class="fas fa-code"></i>`}
+                                            ${p.image ? `<img src="${p.image}" alt="${p.title}" />` : `<i class="fas fa-laptop-code"></i>`}
                                         </div>
                                         <div class="project-date"><i class="far fa-calendar-alt"></i> ${p.date || 'SIJA'}</div>
                                         <h4>${p.title}</h4>
@@ -1869,7 +1869,7 @@
         }
 
         // ============================================================
-        // RENDER CERTIFICATES
+        // RENDER CERTIFICATES (IKON VARIATIF)
         // ============================================================
         function renderCertificates() {
             const certs = data.certificates || [];
@@ -2047,7 +2047,7 @@
         // INIT
         // ============================================================
         loadData();
-        console.log('🚀 Portfolio v2.0 — Data dari data.json + Background rame + Icon Lengkap!');
+        console.log('🚀 Portfolio v3.0 — Ikon Variatif & Keren!');
         console.log('📝 Edit data.json untuk mengubah konten');
     </script>
 
