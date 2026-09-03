@@ -1180,6 +1180,12 @@
             transition: var(--transition);
         }
         
+        .project-card-home .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         .project-card-home:hover .project-thumb {
             border-color: var(--gradient-start);
         }
@@ -1721,7 +1727,7 @@
         }
         
         /* ============================================================
-           CERTIFICATES (TUNDA - Tampilkan Pesan)
+           CERTIFICATES (TUNDA)
            ============================================================ */
         .coming-soon {
             text-align: center;
@@ -2113,7 +2119,6 @@
         <section class="page active" id="page-home">
             <div class="hero">
                 <div class="container">
-                    <!-- FOTO PROFIL -->
                     <div class="hero-photo">
                         <div class="photo-wrapper tilt-effect" id="photoWrapper">
                             <img 
@@ -2135,7 +2140,6 @@
                         </div>
                     </div>
 
-                    <!-- TEKS -->
                     <div class="hero-content">
                         <div class="hero-badge">
                             <span class="dot"></span>
@@ -2162,7 +2166,6 @@
                         </div>
                     </div>
 
-                    <!-- FOTO TAMBAHAN -->
                     <div class="hero-extra-photo">
                         <div class="extra-wrapper">
                             <img 
@@ -2176,7 +2179,6 @@
                 </div>
             </div>
 
-            <!-- COUNTER -->
             <div class="counter-grid reveal">
                 <div class="counter-item">
                     <div class="number" data-count="4">0</div>
@@ -2196,7 +2198,6 @@
                 </div>
             </div>
 
-            <!-- PROJECT UNGGULAN -->
             <div class="section" style="padding-top: 20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
                     <div>
@@ -2237,7 +2238,10 @@
                     </div>
                     <div class="project-card-home reveal">
                         <div class="glow-border"></div>
-                        <div class="project-thumb"><i class="fas fa-file-alt"></i></div>
+                        <div class="project-thumb">
+                            <img src="CV.jpg" alt="CV Preview" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <i class="fas fa-file-alt" style="display:none;"></i>
+                        </div>
                         <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> SIJA</div>
                         <h4>Membuat CV</h4>
                         <p>CV profesional online</p>
@@ -2250,7 +2254,6 @@
                 </div>
             </div>
 
-            <!-- KONTAK -->
             <div class="contact-section">
                 <div style="text-align:center; margin-bottom:12px;">
                     <span class="section-label">Hubungi Saya</span>
@@ -2438,13 +2441,11 @@
                     <span class="line"></span>
                 </div>
 
-                <!-- Tabs Utama -->
                 <div class="project-tabs reveal">
                     <button class="project-tab" data-sub="pa-aan"><i class="fas fa-folder"></i> Tugas Pa Aan</button>
                     <button class="project-tab active-tab" data-sub="pa-abas"><i class="fas fa-folder-open"></i> Tugas Pa Abas</button>
                 </div>
 
-                <!-- Pa Aan (TUNDA) -->
                 <div class="project-subpage" id="sub-pa-aan">
                     <div class="coming-soon">
                         <div class="coming-icon"><i class="fas fa-clock"></i></div>
@@ -2453,10 +2454,8 @@
                     </div>
                 </div>
 
-                <!-- Pa Abas -->
                 <div class="project-subpage active-sub" id="sub-pa-abas">
                     
-                    <!-- Sub Tabs -->
                     <div class="sub-tabs reveal">
                         <button class="sub-tab active-sub" data-subcontent="tkj">
                             <i class="fas fa-server"></i> Konsentrasi Keahlian Komputer &amp; Jaringan
@@ -2466,7 +2465,6 @@
                         </button>
                     </div>
 
-                    <!-- TKJ Content -->
                     <div class="sub-content active-sub-content" id="sub-tkj">
                         <div class="project-grid">
                             <div class="project-card reveal">
@@ -2511,13 +2509,13 @@
                         </div>
                     </div>
 
-                    <!-- SIJA Content -->
                     <div class="sub-content" id="sub-sija">
                         <div class="project-grid">
                             <div class="project-card reveal">
                                 <div class="glow-border"></div>
                                 <div class="project-thumb">
-                                    <img src="https://via.placeholder.com/400x250/1a1a2e/00BCD4?text=CV+Preview" alt="CV Preview" />
+                                    <img src="CV.jpg" alt="CV Preview" onerror="this.style.display='none';this.parentElement.querySelector('i').style.display='flex';" />
+                                    <i class="fas fa-file-alt" style="display:none;"></i>
                                 </div>
                                 <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> SIJA</div>
                                 <h4>Membuat CV</h4>
@@ -2537,7 +2535,8 @@
                             <div class="project-card reveal">
                                 <div class="glow-border"></div>
                                 <div class="project-thumb">
-                                    <img src="https://via.placeholder.com/400x250/1a1a2e/00BCD4?text=Portfolio+Preview" alt="Portfolio Preview" />
+                                    <img src="porto.jpg" alt="Portfolio Preview" onerror="this.style.display='none';this.parentElement.querySelector('i').style.display='flex';" />
+                                    <i class="fas fa-code" style="display:none;"></i>
                                 </div>
                                 <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> SIJA</div>
                                 <h4>Membuat Portofolio</h4>
@@ -2595,12 +2594,10 @@
             // ==========================================================
             const html = document.documentElement;
             
-            // Desktop Nav
             const desktopNavLinks = document.querySelectorAll('.navbar .nav-links a');
             const desktopThemeToggle = document.getElementById('desktopThemeToggle');
             const desktopThemeIcon = document.getElementById('desktopThemeIcon');
             
-            // Mobile
             const burgerBtn = document.getElementById('burgerBtn');
             const mobileSidebar = document.getElementById('mobileSidebar');
             const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -2610,7 +2607,6 @@
             const mobileThemeIcon = document.getElementById('mobileThemeIcon');
             const sidebarThemeSwitch = document.getElementById('sidebarThemeSwitch');
             
-            // Pages
             const pages = {
                 home: document.getElementById('page-home'),
                 about: document.getElementById('page-about'),
@@ -2618,14 +2614,12 @@
                 certificate: document.getElementById('page-certificate')
             };
             
-            // Tabs
             const tabButtons = document.querySelectorAll('.project-tab');
             const subPages = {
                 'pa-aan': document.getElementById('sub-pa-aan'),
                 'pa-abas': document.getElementById('sub-pa-abas')
             };
             
-            // Sub Tabs (TKJ / SIJA)
             const subTabButtons = document.querySelectorAll('.sub-tab');
             const subContents = {
                 'tkj': document.getElementById('sub-tkj'),
@@ -2874,7 +2868,7 @@
             });
 
             // ==========================================================
-            // PROJECT TABS (Pa Aan / Pa Abas)
+            // PROJECT TABS
             // ==========================================================
             tabButtons.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -2895,7 +2889,7 @@
             });
 
             // ==========================================================
-            // SUB TABS (TKJ / SIJA)
+            // SUB TABS
             // ==========================================================
             subTabButtons.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -3063,9 +3057,8 @@
                 }
             });
 
-            console.log('🚀 Portfolio Chairil Ibrahim v12.0 — PROJECT BARU!');
-            console.log('📁 Project: TKJ (2) + SIJA (2)');
-            console.log('📌 Pa Aan & Sertifikat: Coming Soon');
+            console.log('🚀 Portfolio Chairil Ibrahim v13.0 — GAMBAR LOKAL CV.jpg & porto.jpg!');
+            console.log('📁 File gambar: CV.jpg, porto.jpg, fotoprofile.jpg, foto1.png');
 
         })();
     </script>
