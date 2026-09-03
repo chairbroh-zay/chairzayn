@@ -234,7 +234,7 @@
         }
         
         /* ============================================================
-           NAVBAR (DESKTOP) - Horizontal di atas
+           NAVBAR (DESKTOP)
            ============================================================ */
         .navbar {
             position: fixed;
@@ -282,7 +282,6 @@
             font-weight: 300;
         }
         
-        /* Nav Links Desktop */
         .navbar .nav-links {
             display: flex;
             align-items: center;
@@ -344,7 +343,6 @@
             opacity: 1;
         }
         
-        /* Navbar Right - Theme Toggle Desktop */
         .navbar .nav-actions {
             display: flex;
             align-items: center;
@@ -373,7 +371,7 @@
         }
         
         /* ============================================================
-           MOBILE HEADER (burger & logo)
+           MOBILE HEADER
            ============================================================ */
         .mobile-header {
             display: none;
@@ -426,7 +424,6 @@
             gap: 8px;
         }
         
-        /* Burger Button */
         .burger-btn {
             width: 40px;
             height: 40px;
@@ -446,7 +443,6 @@
             border-color: var(--gradient-start);
         }
         
-        /* Mobile Theme Toggle */
         .mobile-theme-btn {
             width: 40px;
             height: 40px;
@@ -468,7 +464,7 @@
         }
         
         /* ============================================================
-           MOBILE SIDEBAR (slide-in dari kiri, 50% lebar)
+           MOBILE SIDEBAR (50% lebar)
            ============================================================ */
         .mobile-sidebar {
             position: fixed;
@@ -492,7 +488,6 @@
             transform: translateX(0);
         }
         
-        /* Overlay gelap di belakang sidebar */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -686,33 +681,19 @@
         }
         
         /* ============================================================
-           SHOW/HIDE NAVBAR BASED ON SCREEN
+           SHOW/HIDE NAVBAR
            ============================================================ */
         @media (min-width: 769px) {
-            .mobile-header {
-                display: none !important;
-            }
-            .mobile-sidebar {
-                display: none !important;
-            }
-            .sidebar-overlay {
-                display: none !important;
-            }
-            .navbar {
-                display: flex !important;
-            }
+            .mobile-header { display: none !important; }
+            .mobile-sidebar { display: none !important; }
+            .sidebar-overlay { display: none !important; }
+            .navbar { display: flex !important; }
         }
         
         @media (max-width: 768px) {
-            .navbar {
-                display: none !important;
-            }
-            .mobile-header {
-                display: flex !important;
-            }
-            body {
-                padding-top: var(--navbar-height);
-            }
+            .navbar { display: none !important; }
+            .mobile-header { display: flex !important; }
+            body { padding-top: var(--navbar-height); }
         }
         
         /* ============================================================
@@ -746,17 +727,10 @@
         }
         
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Scroll reveal */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -802,37 +776,8 @@
             background-clip: text;
         }
         
-        .section-desc {
-            color: var(--text-secondary);
-            font-size: 16px;
-            max-width: 520px;
-            line-height: 1.7;
-        }
-        
         /* ============================================================
-           DIVIDER DEKORATIF
-           ============================================================ */
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin: 8px 0 16px;
-            opacity: 0.3;
-        }
-        
-        .divider .line {
-            flex: 1;
-            height: 1px;
-            background: var(--border-color);
-        }
-        
-        .divider .icon {
-            color: var(--gradient-start);
-            font-size: 14px;
-        }
-        
-        /* ============================================================
-           HOME / HERO 
+           HOME / HERO
            ============================================================ */
         .hero {
             min-height: 60vh;
@@ -853,7 +798,6 @@
             z-index: 2;
         }
         
-        /* ===== FOTO PROFIL (KIRI) ===== */
         .hero-photo {
             display: flex;
             justify-content: center;
@@ -933,7 +877,6 @@
             transform: rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
         }
         
-        /* Floating icons di sekitar foto profil */
         .floating-icons {
             position: absolute;
             inset: 0;
@@ -964,9 +907,7 @@
             75% { transform: translate(15px, 5px) rotate(15deg) scale(1.05); }
         }
         
-        /* ============================================================
-           FOTO TAMBAHAN (KANAN - SLIDE FROM RIGHT)
-           ============================================================ */
+        /* Foto Tambahan (Kanan) - DISABLE DI MOBILE */
         .hero-extra-photo {
             position: absolute;
             right: 0;
@@ -984,14 +925,8 @@
         }
         
         @keyframes slideFromRight {
-            0% {
-                opacity: 0;
-                transform: translateY(-50%) translateX(100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(-50%) translateX(0);
-            }
+            0% { opacity: 0; transform: translateY(-50%) translateX(100%); }
+            100% { opacity: 1; transform: translateY(-50%) translateX(0); }
         }
         
         .hero-extra-photo .extra-wrapper {
@@ -1041,21 +976,11 @@
             z-index: 2;
         }
         
-        .hero-extra-photo .extra-wrapper:hover img {
-            opacity: 0.85;
-            transform: scale(1.02);
-        }
-        
-        /* DISABLE FOTO TAMBAHAN DI MOBILE */
         @media (max-width: 768px) {
-            .hero-extra-photo {
-                display: none !important;
-            }
+            .hero-extra-photo { display: none !important; }
         }
         
-        /* ============================================================
-           HERO CONTENT (TEKS TENGAH)
-           ============================================================ */
+        /* Hero Content */
         .hero-content {
             display: flex;
             flex-direction: column;
@@ -1168,7 +1093,7 @@
         }
         
         /* ============================================================
-           COUNTER SECTION
+           COUNTER
            ============================================================ */
         .counter-grid {
             display: grid;
@@ -1209,7 +1134,7 @@
         }
         
         /* ============================================================
-           PROJECT SECTION
+           PROJECT SECTION HOME
            ============================================================ */
         .project-grid-home {
             display: grid;
@@ -1373,7 +1298,7 @@
         }
         
         /* ============================================================
-           KONTAK SECTION
+           KONTAK
            ============================================================ */
         .contact-section {
             padding: 30px 0 10px;
@@ -1594,9 +1519,45 @@
             box-shadow: 0 4px 20px rgba(0, 188, 212, 0.3);
         }
         
+        /* SUB TABS untuk Pa Abas */
+        .sub-tabs {
+            display: flex;
+            gap: 6px;
+            margin: 12px 0 20px;
+            flex-wrap: wrap;
+        }
+        
+        .sub-tab {
+            padding: 6px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: var(--font);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            min-height: 34px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .sub-tab:hover {
+            border-color: var(--gradient-start);
+            color: var(--text-secondary);
+        }
+        
+        .sub-tab.active-sub {
+            background: var(--gradient-bg);
+            color: var(--text-inverse);
+            border-color: transparent;
+        }
+        
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 16px;
         }
         
@@ -1637,6 +1598,12 @@
             transition: var(--transition);
         }
         
+        .project-card .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         .project-card:hover .project-thumb {
             border-color: var(--gradient-start);
         }
@@ -1652,7 +1619,7 @@
         }
         
         .project-card .project-date {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
             margin-bottom: 2px;
         }
@@ -1664,11 +1631,12 @@
             color: var(--text-primary);
         }
         
-        .project-card p {
+        .project-card .project-desc {
             font-size: 13px;
             color: var(--text-muted);
             margin-bottom: 10px;
             flex: 1;
+            line-height: 1.6;
         }
         
         .project-card .project-tech {
@@ -1708,6 +1676,10 @@
             margin-top: auto;
         }
         
+        .project-card .project-link i {
+            transition: var(--transition);
+        }
+        
         .project-card .project-link:hover {
             color: var(--gradient-start);
         }
@@ -1739,102 +1711,44 @@
             display: block;
         }
         
+        .sub-content {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+        
+        .sub-content.active-sub-content {
+            display: block;
+        }
+        
         /* ============================================================
-           CERTIFICATES
+           CERTIFICATES (TUNDA - Tampilkan Pesan)
            ============================================================ */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 16px;
-            margin-top: 16px;
-        }
-        
-        .cert-card {
-            perspective: 800px;
-            height: 200px;
-            cursor: pointer;
-        }
-        
-        .cert-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-        
-        .cert-card:hover .cert-card-inner {
-            transform: rotateY(180deg);
-        }
-        
-        .cert-card-front,
-        .cert-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: var(--radius-md);
-            padding: 20px 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .coming-soon {
             text-align: center;
-            border: 1px solid var(--border-color);
+            padding: 40px 20px;
             background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
             backdrop-filter: blur(10px);
         }
         
-        .cert-card-front {
-            background: var(--bg-card);
+        .coming-soon .coming-icon {
+            font-size: 48px;
+            color: var(--gradient-start);
+            margin-bottom: 12px;
+            opacity: 0.5;
         }
         
-        .cert-card-back {
-            transform: rotateY(180deg);
-            background: var(--gradient-bg);
-            color: var(--text-inverse);
-        }
-        
-        .cert-card-back p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 13px;
-            line-height: 1.6;
-        }
-        
-        .cert-card-back .back-icon {
-            font-size: 28px;
-            margin-bottom: 6px;
-        }
-        
-        .cert-card .cert-icon {
-            font-size: 36px;
-            margin-bottom: 8px;
-            display: block;
-            opacity: 0.7;
-        }
-        
-        .cert-card h4 {
-            font-size: 16px;
+        .coming-soon h3 {
+            font-size: 24px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
         
-        .cert-card p {
-            font-size: 12px;
+        .coming-soon p {
             color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-        
-        .cert-card .cert-badge {
-            display: inline-block;
-            padding: 3px 12px;
-            background: var(--gradient-bg);
-            border-radius: 100px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--text-inverse);
-            letter-spacing: 0.3px;
+            font-size: 14px;
         }
         
         /* ============================================================
@@ -1860,6 +1774,10 @@
             .project-grid-home {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .project-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
         }
         
         @media (max-width: 768px) {
@@ -1883,7 +1801,6 @@
                 align-items: center;
                 order: 2;
                 padding: 10px 0;
-                position: relative;
                 z-index: 3;
             }
             
@@ -1940,12 +1857,13 @@
                 padding: 14px;
             }
             
-            .project-card-home h4 {
-                font-size: 13px;
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
             }
             
-            .project-card-home p {
-                font-size: 11px;
+            .project-card {
+                padding: 14px;
             }
             
             .contact-grid {
@@ -1973,6 +1891,16 @@
             .cursor-ring {
                 display: none !important;
             }
+            
+            .sub-tabs {
+                justify-content: center;
+            }
+            
+            .sub-tab {
+                font-size: 11px;
+                padding: 4px 12px;
+                min-height: 30px;
+            }
         }
         
         @media (max-width: 420px) {
@@ -1990,10 +1918,6 @@
             }
             
             .project-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cert-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -2016,6 +1940,16 @@
                 width: 60%;
                 max-width: 280px;
             }
+            
+            .project-tabs {
+                justify-content: center;
+            }
+            
+            .project-tab {
+                font-size: 12px;
+                padding: 6px 14px;
+                min-height: 34px;
+            }
         }
         
         /* ============================================================
@@ -2023,13 +1957,13 @@
            ============================================================ */
         .btn,
         .project-tab,
+        .sub-tab,
         .navbar .nav-links a,
         .mobile-sidebar nav a,
         .burger-btn,
         .mobile-theme-btn,
         .sidebar-close,
         .navbar .theme-toggle-btn,
-        .cert-card,
         .contact-item {
             touch-action: manipulation;
         }
@@ -2065,10 +1999,6 @@
                 animation: none !important;
             }
             
-            .cert-card:hover .cert-card-inner {
-                transform: none;
-            }
-            
             .reveal {
                 opacity: 1 !important;
                 transform: none !important;
@@ -2091,7 +2021,7 @@
     <div class="gradient-orb orb3"></div>
 
     <!-- ============================================================
-    NAVBAR DESKTOP (Horizontal di atas)
+    NAVBAR DESKTOP
     ============================================================ -->
     <nav class="navbar" id="navbarDesktop">
         <a href="#" class="logo" onclick="switchPage('home')">
@@ -2102,8 +2032,8 @@
         <ul class="nav-links">
             <li><a href="#" class="active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="#" data-page="about"><i class="fas fa-user"></i> About</a></li>
-            <li><a href="#" data-page="project"><i class="fas fa-folder-open"></i> Projects <span class="badge">6</span></a></li>
-            <li><a href="#" data-page="certificate"><i class="fas fa-certificate"></i> Certificates <span class="badge">3</span></a></li>
+            <li><a href="#" data-page="project"><i class="fas fa-folder-open"></i> Projects <span class="badge">4</span></a></li>
+            <li><a href="#" data-page="certificate"><i class="fas fa-certificate"></i> Certificates <span class="badge">0</span></a></li>
         </ul>
 
         <div class="nav-actions">
@@ -2114,7 +2044,7 @@
     </nav>
 
     <!-- ============================================================
-    MOBILE HEADER (Burger + Logo)
+    MOBILE HEADER
     ============================================================ -->
     <header class="mobile-header" id="mobileHeader">
         <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
@@ -2134,7 +2064,7 @@
     </header>
 
     <!-- ============================================================
-    MOBILE SIDEBAR (slide-in dari kiri, 50% lebar)
+    MOBILE SIDEBAR
     ============================================================ -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -2155,11 +2085,11 @@
             </a>
             <a href="#" data-page="project">
                 <i class="fas fa-folder-open"></i> Projects
-                <span class="badge">6</span>
+                <span class="badge">4</span>
             </a>
             <a href="#" data-page="certificate">
                 <i class="fas fa-certificate"></i> Certificates
-                <span class="badge">3</span>
+                <span class="badge">0</span>
             </a>
         </nav>
 
@@ -2183,7 +2113,7 @@
         <section class="page active" id="page-home">
             <div class="hero">
                 <div class="container">
-                    <!-- FOTO PROFIL (KIRI) -->
+                    <!-- FOTO PROFIL -->
                     <div class="hero-photo">
                         <div class="photo-wrapper tilt-effect" id="photoWrapper">
                             <img 
@@ -2205,7 +2135,7 @@
                         </div>
                     </div>
 
-                    <!-- TEKS TENGAH -->
+                    <!-- TEKS -->
                     <div class="hero-content">
                         <div class="hero-badge">
                             <span class="dot"></span>
@@ -2232,7 +2162,7 @@
                         </div>
                     </div>
 
-                    <!-- FOTO TAMBAHAN (KANAN) -->
+                    <!-- FOTO TAMBAHAN -->
                     <div class="hero-extra-photo">
                         <div class="extra-wrapper">
                             <img 
@@ -2249,12 +2179,8 @@
             <!-- COUNTER -->
             <div class="counter-grid reveal">
                 <div class="counter-item">
-                    <div class="number" data-count="6">0</div>
-                    <div class="label"><i class="fas fa-folder-open" style="margin-right:4px;"></i> Project Selesai</div>
-                </div>
-                <div class="counter-item">
-                    <div class="number" data-count="3">0</div>
-                    <div class="label"><i class="fas fa-certificate" style="margin-right:4px;"></i> Sertifikat</div>
+                    <div class="number" data-count="4">0</div>
+                    <div class="label"><i class="fas fa-folder-open" style="margin-right:4px;"></i> Project</div>
                 </div>
                 <div class="counter-item">
                     <div class="number" data-count="9">0</div>
@@ -2264,9 +2190,13 @@
                     <div class="number" data-count="6">0</div>
                     <div class="label"><i class="fas fa-handshake" style="margin-right:4px;"></i> Soft Skill</div>
                 </div>
+                <div class="counter-item">
+                    <div class="number" data-count="3">0</div>
+                    <div class="label"><i class="fas fa-certificate" style="margin-right:4px;"></i> Sertifikat</div>
+                </div>
             </div>
 
-            <!-- PROJECT SECTION -->
+            <!-- PROJECT UNGGULAN -->
             <div class="section" style="padding-top: 20px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
                     <div>
@@ -2283,39 +2213,39 @@
                 <div class="project-grid-home" style="margin-top:16px;">
                     <div class="project-card-home reveal">
                         <div class="glow-border"></div>
-                        <div class="project-thumb"><i class="fas fa-chart-line"></i></div>
-                        <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 30 Juli 2026</div>
-                        <h4>Dashboard Analysis</h4>
-                        <p>Analisis data real-time untuk client</p>
-                        <div class="project-tech">
-                            <span><i class="fab fa-react"></i> React</span>
-                            <span><i class="fab fa-node-js"></i> Node.js</span>
-                        </div>
-                        <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="project-card-home reveal">
-                        <div class="glow-border"></div>
                         <div class="project-thumb"><i class="fas fa-network-wired"></i></div>
-                        <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 2026</div>
-                        <h4>Topologi Jaringan Dasar</h4>
-                        <p>Konfigurasi router &amp; switch VLAN</p>
+                        <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> TKJ</div>
+                        <h4>Perencanaan Jaringan Lab</h4>
+                        <p>Topologi jaringan &amp; konfigurasi IP</p>
                         <div class="project-tech">
                             <span><i class="fas fa-server"></i> Cisco</span>
-                            <span><i class="fas fa-code-branch"></i> VLAN</span>
+                            <span><i class="fas fa-code-branch"></i> Topologi</span>
                         </div>
-                        <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://1drv.ms/p/c/9002a09ef52e2f36/IQDh2TVA5VGFQrvOKXHmFsioAW8uFHosG8K6VvXvg8q2jQM?e=3hkDLR" target="_blank" class="project-link">Kunjungi <i class="fas fa-external-link-alt"></i></a>
                     </div>
                     <div class="project-card-home reveal">
                         <div class="glow-border"></div>
-                        <div class="project-thumb"><i class="fas fa-server"></i></div>
-                        <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 2026</div>
-                        <h4>DHCP &amp; DNS Server</h4>
-                        <p>Implementasi server Cisco Packet Tracer</p>
+                        <div class="project-thumb"><i class="fas fa-shield-alt"></i></div>
+                        <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> TKJ</div>
+                        <h4>Firewall &amp; Keamanan</h4>
+                        <p>Implementasi firewall &amp; proteksi</p>
                         <div class="project-tech">
-                            <span><i class="fas fa-network-wired"></i> DHCP</span>
-                            <span><i class="fas fa-globe"></i> DNS</span>
+                            <span><i class="fas fa-shield-alt"></i> Firewall</span>
+                            <span><i class="fas fa-lock"></i> Security</span>
                         </div>
-                        <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://1drv.ms/b/c/9002a09ef52e2f36/IQCDWgDmNvwSQqodpBC0JoCnAZ2ot81-Mq9TmE6Grby-e0w?e=jdDhRb" target="_blank" class="project-link">Kunjungi <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="project-card-home reveal">
+                        <div class="glow-border"></div>
+                        <div class="project-thumb"><i class="fas fa-file-alt"></i></div>
+                        <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> SIJA</div>
+                        <h4>Membuat CV</h4>
+                        <p>CV profesional online</p>
+                        <div class="project-tech">
+                            <span><i class="fab fa-html5"></i> HTML</span>
+                            <span><i class="fab fa-css3-alt"></i> CSS</span>
+                        </div>
+                        <a href="https://cvchairil.netlify.app" target="_blank" class="project-link">Kunjungi <i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
             </div>
@@ -2508,103 +2438,121 @@
                     <span class="line"></span>
                 </div>
 
+                <!-- Tabs Utama -->
                 <div class="project-tabs reveal">
-                    <button class="project-tab active-tab" data-sub="pa-aan"><i class="fas fa-folder"></i> Tugas Pa Aan</button>
-                    <button class="project-tab" data-sub="pa-abas"><i class="fas fa-folder-open"></i> Tugas Pa Abas</button>
+                    <button class="project-tab" data-sub="pa-aan"><i class="fas fa-folder"></i> Tugas Pa Aan</button>
+                    <button class="project-tab active-tab" data-sub="pa-abas"><i class="fas fa-folder-open"></i> Tugas Pa Abas</button>
                 </div>
 
-                <div class="project-subpage active-sub" id="sub-pa-aan">
-                    <div class="project-grid">
-                        <div class="project-card reveal">
-                            <div class="glow-border"></div>
-                            <div class="project-thumb"><i class="fas fa-chart-line"></i></div>
-                            <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 30 Juli 2026</div>
-                            <h4>Dashboard Analysis</h4>
-                            <p>Analisis data real-time untuk client Chairbroh</p>
-                            <div class="project-tech">
-                                <span><i class="fab fa-react"></i> React</span>
-                                <span><i class="fab fa-node-js"></i> Node.js</span>
-                                <span><i class="fas fa-database"></i> MongoDB</span>
-                            </div>
-                            <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="project-card reveal">
-                            <div class="glow-border"></div>
-                            <div class="project-thumb"><i class="fas fa-network-wired"></i></div>
-                            <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 2026</div>
-                            <h4>Topologi Jaringan Dasar</h4>
-                            <p>Konfigurasi router &amp; switch dengan VLAN</p>
-                            <div class="project-tech">
-                                <span><i class="fas fa-server"></i> Cisco</span>
-                                <span><i class="fas fa-code-branch"></i> VLAN</span>
-                            </div>
-                            <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="project-card reveal">
-                            <div class="glow-border"></div>
-                            <div class="project-thumb"><i class="fas fa-server"></i></div>
-                            <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 2026</div>
-                            <h4>DHCP &amp; DNS Server</h4>
-                            <p>Implementasi server di Cisco Packet Tracer</p>
-                            <div class="project-tech">
-                                <span><i class="fas fa-network-wired"></i> DHCP</span>
-                                <span><i class="fas fa-globe"></i> DNS</span>
-                            </div>
-                            <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="project-card reveal">
-                            <div class="glow-border"></div>
-                            <div class="project-thumb"><i class="fas fa-wifi"></i></div>
-                            <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 2026</div>
-                            <h4>Wireless Network</h4>
-                            <p>Perancangan WLAN dengan access point</p>
-                            <div class="project-tech">
-                                <span><i class="fas fa-wifi"></i> WLAN</span>
-                                <span><i class="fas fa-signal"></i> Access Point</span>
-                            </div>
-                            <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
+                <!-- Pa Aan (TUNDA) -->
+                <div class="project-subpage" id="sub-pa-aan">
+                    <div class="coming-soon">
+                        <div class="coming-icon"><i class="fas fa-clock"></i></div>
+                        <h3>Segera Hadir</h3>
+                        <p>Project dari Tugas Pa Aan sedang dalam proses pengumpulan foto dan dokumentasi.</p>
                     </div>
                 </div>
 
-                <div class="project-subpage" id="sub-pa-abas">
-                    <div class="project-grid">
-                        <div class="project-card reveal">
-                            <div class="glow-border"></div>
-                            <div class="project-thumb"><i class="fas fa-code"></i></div>
-                            <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 2026</div>
-                            <h4>Portfolio Website</h4>
-                            <p>Website personal dengan HTML, CSS, JavaScript</p>
-                            <div class="project-tech">
-                                <span><i class="fab fa-html5"></i> HTML</span>
-                                <span><i class="fab fa-css3-alt"></i> CSS</span>
-                                <span><i class="fab fa-js"></i> JS</span>
+                <!-- Pa Abas -->
+                <div class="project-subpage active-sub" id="sub-pa-abas">
+                    
+                    <!-- Sub Tabs -->
+                    <div class="sub-tabs reveal">
+                        <button class="sub-tab active-sub" data-subcontent="tkj">
+                            <i class="fas fa-server"></i> Konsentrasi Keahlian Komputer &amp; Jaringan
+                        </button>
+                        <button class="sub-tab" data-subcontent="sija">
+                            <i class="fas fa-code"></i> Sistem Informasi, Jaringan &amp; Aplikasi
+                        </button>
+                    </div>
+
+                    <!-- TKJ Content -->
+                    <div class="sub-content active-sub-content" id="sub-tkj">
+                        <div class="project-grid">
+                            <div class="project-card reveal">
+                                <div class="glow-border"></div>
+                                <div class="project-thumb">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> TKJ</div>
+                                <h4>Perencanaan Jaringan di Lab Komputer</h4>
+                                <p class="project-desc">
+                                    Perencanaan topologi jaringan, konfigurasi IP, dan simulasi jaringan untuk laboratorium komputer.
+                                </p>
+                                <div class="project-tech">
+                                    <span><i class="fas fa-server"></i> Cisco</span>
+                                    <span><i class="fas fa-code-branch"></i> Topologi</span>
+                                    <span><i class="fas fa-network-wired"></i> Jaringan</span>
+                                </div>
+                                <a href="https://1drv.ms/p/c/9002a09ef52e2f36/IQDh2TVA5VGFQrvOKXHmFsioAW8uFHosG8K6VvXvg8q2jQM?e=3hkDLR" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Kunjungi
+                                </a>
                             </div>
-                            <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
+
+                            <div class="project-card reveal">
+                                <div class="glow-border"></div>
+                                <div class="project-thumb">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> TKJ</div>
+                                <h4>Keamanan dan Jaringan (Firewall)</h4>
+                                <p class="project-desc">
+                                    Implementasi firewall untuk keamanan jaringan, konfigurasi aturan, dan proteksi dari ancaman.
+                                </p>
+                                <div class="project-tech">
+                                    <span><i class="fas fa-shield-alt"></i> Firewall</span>
+                                    <span><i class="fas fa-lock"></i> Security</span>
+                                    <span><i class="fas fa-network-wired"></i> Jaringan</span>
+                                </div>
+                                <a href="https://1drv.ms/b/c/9002a09ef52e2f36/IQCDWgDmNvwSQqodpBC0JoCnAZ2ot81-Mq9TmE6Grby-e0w?e=jdDhRb" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Kunjungi
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-card reveal">
-                            <div class="glow-border"></div>
-                            <div class="project-thumb"><i class="fas fa-database"></i></div>
-                            <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 2026</div>
-                            <h4>Aplikasi Data Siswa</h4>
-                            <p>CRUD dengan Python &amp; SQLite</p>
-                            <div class="project-tech">
-                                <span><i class="fab fa-python"></i> Python</span>
-                                <span><i class="fas fa-database"></i> SQLite</span>
+                    </div>
+
+                    <!-- SIJA Content -->
+                    <div class="sub-content" id="sub-sija">
+                        <div class="project-grid">
+                            <div class="project-card reveal">
+                                <div class="glow-border"></div>
+                                <div class="project-thumb">
+                                    <img src="https://via.placeholder.com/400x250/1a1a2e/00BCD4?text=CV+Preview" alt="CV Preview" />
+                                </div>
+                                <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> SIJA</div>
+                                <h4>Membuat CV</h4>
+                                <p class="project-desc">
+                                    Pembuatan CV profesional online menggunakan HTML, CSS, dan JavaScript. Tersedia dalam versi digital.
+                                </p>
+                                <div class="project-tech">
+                                    <span><i class="fab fa-html5"></i> HTML</span>
+                                    <span><i class="fab fa-css3-alt"></i> CSS</span>
+                                    <span><i class="fab fa-js"></i> JavaScript</span>
+                                </div>
+                                <a href="https://cvchairil.netlify.app" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Kunjungi
+                                </a>
                             </div>
-                            <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="project-card reveal">
-                            <div class="glow-border"></div>
-                            <div class="project-thumb"><i class="fas fa-robot"></i></div>
-                            <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> 2026</div>
-                            <h4>Chatbot Sederhana</h4>
-                            <p>Menggunakan Python dengan library NLTK</p>
-                            <div class="project-tech">
-                                <span><i class="fab fa-python"></i> Python</span>
-                                <span><i class="fas fa-comment-dots"></i> NLTK</span>
+
+                            <div class="project-card reveal">
+                                <div class="glow-border"></div>
+                                <div class="project-thumb">
+                                    <img src="https://via.placeholder.com/400x250/1a1a2e/00BCD4?text=Portfolio+Preview" alt="Portfolio Preview" />
+                                </div>
+                                <div class="project-date"><i class="far fa-calendar-alt" style="margin-right:4px;"></i> SIJA</div>
+                                <h4>Membuat Portofolio</h4>
+                                <p class="project-desc">
+                                    Pengembangan website portofolio pribadi sebagai showcase project dan pengalaman.
+                                </p>
+                                <div class="project-tech">
+                                    <span><i class="fab fa-html5"></i> HTML</span>
+                                    <span><i class="fab fa-css3-alt"></i> CSS</span>
+                                    <span><i class="fab fa-js"></i> JavaScript</span>
+                                </div>
+                                <a href="https://chairbroh-zay.github.io/chairzayn/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Kunjungi
+                                </a>
                             </div>
-                            <a href="#" class="project-link">Lihat detail <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -2618,9 +2566,6 @@
                 <h2 class="section-title reveal">
                     Sertifikat <span class="highlight">Kompetensi</span>
                 </h2>
-                <p class="section-desc reveal" style="margin-bottom:6px;">
-                    Versi demo &mdash; bukti penguasaan Microsoft Office.
-                </p>
 
                 <div class="divider reveal">
                     <span class="line"></span>
@@ -2628,49 +2573,10 @@
                     <span class="line"></span>
                 </div>
 
-                <div class="cert-grid">
-                    <div class="cert-card reveal">
-                        <div class="cert-card-inner">
-                            <div class="cert-card-front">
-                                <span class="cert-icon"><i class="fas fa-file-excel" style="color:#217346;"></i></span>
-                                <h4>Microsoft Excel</h4>
-                                <p>Mahir · Formula &amp; Pivot</p>
-                                <span class="cert-badge"><i class="fas fa-check" style="margin-right:4px;"></i> Tersertifikasi</span>
-                            </div>
-                            <div class="cert-card-back">
-                                <span class="back-icon"><i class="fas fa-trophy"></i></span>
-                                <p>Kompeten dalam pengolahan data, formula kompleks, dan visualisasi data dengan Excel.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cert-card reveal">
-                        <div class="cert-card-inner">
-                            <div class="cert-card-front">
-                                <span class="cert-icon"><i class="fas fa-file-powerpoint" style="color:#D24726;"></i></span>
-                                <h4>Microsoft PowerPoint</h4>
-                                <p>Mahir · Presentasi &amp; Animasi</p>
-                                <span class="cert-badge"><i class="fas fa-check" style="margin-right:4px;"></i> Tersertifikasi</span>
-                            </div>
-                            <div class="cert-card-back">
-                                <span class="back-icon"><i class="fas fa-bullseye"></i></span>
-                                <p>Ahli dalam membuat presentasi profesional dengan animasi dan transisi yang menarik.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cert-card reveal">
-                        <div class="cert-card-inner">
-                            <div class="cert-card-front">
-                                <span class="cert-icon"><i class="fas fa-file-word" style="color:#2B5797;"></i></span>
-                                <h4>Microsoft Word</h4>
-                                <p>Mahir · Formatting &amp; Mail Merge</p>
-                                <span class="cert-badge"><i class="fas fa-check" style="margin-right:4px;"></i> Tersertifikasi</span>
-                            </div>
-                            <div class="cert-card-back">
-                                <span class="back-icon"><i class="fas fa-pen-fancy"></i></span>
-                                <p>Terampil dalam pembuatan dokumen, formatting lanjutan, dan mail merge untuk surat massal.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="coming-soon">
+                    <div class="coming-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Segera Hadir</h3>
+                    <p>Sertifikat kompetensi sedang dalam proses pengumpulan dan dokumentasi.</p>
                 </div>
             </div>
         </section>
@@ -2712,10 +2618,18 @@
                 certificate: document.getElementById('page-certificate')
             };
             
+            // Tabs
             const tabButtons = document.querySelectorAll('.project-tab');
             const subPages = {
                 'pa-aan': document.getElementById('sub-pa-aan'),
                 'pa-abas': document.getElementById('sub-pa-abas')
+            };
+            
+            // Sub Tabs (TKJ / SIJA)
+            const subTabButtons = document.querySelectorAll('.sub-tab');
+            const subContents = {
+                'tkj': document.getElementById('sub-tkj'),
+                'sija': document.getElementById('sub-sija')
             };
             
             const cursorDot = document.getElementById('cursorDot');
@@ -2763,7 +2677,7 @@
                     cursorRing.style.transform = 'translate(-50%, -50%) scale(1)';
                 });
 
-                document.querySelectorAll('a, button, .project-card, .cert-card, .skill-item, .soft-skills span, .contact-item')
+                document.querySelectorAll('a, button, .project-card, .skill-item, .soft-skills span, .contact-item')
                     .forEach(el => {
                         el.addEventListener('mouseenter', function() {
                             cursorRing.style.width = '56px';
@@ -2859,7 +2773,7 @@
             animateParticles();
 
             // ==========================================================
-            // THEME TOGGLE (Synchronized)
+            // THEME TOGGLE
             // ==========================================================
             function setTheme(isLight) {
                 if (isLight) {
@@ -2926,21 +2840,18 @@
             });
 
             // ==========================================================
-            // NAVIGATION (Desktop + Mobile)
+            // NAVIGATION
             // ==========================================================
             function switchPage(pageId) {
-                // Update all nav links
                 const allLinks = [...desktopNavLinks, ...mobileNavLinks];
                 allLinks.forEach(link => {
                     link.classList.toggle('active', link.dataset.page === pageId);
                 });
 
-                // Show page
                 Object.keys(pages).forEach(key => {
                     pages[key].classList.toggle('active', key === pageId);
                 });
 
-                // Close mobile sidebar
                 closeSidebar();
 
                 if (pageId) history.pushState(null, '', '#' + pageId);
@@ -2948,7 +2859,6 @@
                 setTimeout(animateCounters, 400);
             }
 
-            // Desktop nav links
             desktopNavLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2956,7 +2866,6 @@
                 });
             });
 
-            // Mobile nav links
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2965,7 +2874,7 @@
             });
 
             // ==========================================================
-            // PROJECT TABS
+            // PROJECT TABS (Pa Aan / Pa Abas)
             // ==========================================================
             tabButtons.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -2979,6 +2888,27 @@
 
                     setTimeout(() => {
                         document.querySelectorAll('.project-subpage.active-sub .reveal').forEach(el => {
+                            el.classList.add('visible');
+                        });
+                    }, 100);
+                });
+            });
+
+            // ==========================================================
+            // SUB TABS (TKJ / SIJA)
+            // ==========================================================
+            subTabButtons.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    subTabButtons.forEach(t => t.classList.remove('active-sub'));
+                    this.classList.add('active-sub');
+
+                    const subId = this.dataset.subcontent;
+                    Object.keys(subContents).forEach(key => {
+                        subContents[key].classList.toggle('active-sub-content', key === subId);
+                    });
+
+                    setTimeout(() => {
+                        document.querySelectorAll('.sub-content.active-sub-content .reveal').forEach(el => {
                             el.classList.add('visible');
                         });
                     }, 100);
@@ -3102,11 +3032,7 @@
                 if (hash && pages[hash]) {
                     const allLinks = [...desktopNavLinks, ...mobileNavLinks];
                     allLinks.forEach(link => {
-                        if (link.dataset.page === hash) {
-                            link.classList.add('active');
-                        } else {
-                            link.classList.remove('active');
-                        }
+                        link.classList.toggle('active', link.dataset.page === hash);
                     });
                     Object.keys(pages).forEach(key => {
                         pages[key].classList.toggle('active', key === hash);
@@ -3137,8 +3063,9 @@
                 }
             });
 
-            console.log('🚀 Portfolio Chairil Ibrahim v11.0 — NAVBAR HORIZONTAL + BURGER 50% MOBILE!');
-            console.log('📱 Desktop: Navbar horizontal | Mobile: Burger 50% lebar');
+            console.log('🚀 Portfolio Chairil Ibrahim v12.0 — PROJECT BARU!');
+            console.log('📁 Project: TKJ (2) + SIJA (2)');
+            console.log('📌 Pa Aan & Sertifikat: Coming Soon');
 
         })();
     </script>
