@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        /* ===== ROOT VARIABLES (Sama Seperti Sebelumnya) ===== */
+        /* ===== ROOT VARIABLES (Sama) ===== */
         :root {
             --bg-primary: #000000;
             --bg-secondary: #0A0A0A;
@@ -54,7 +54,7 @@
             --shadow-glow: 0 0 60px rgba(0, 188, 212, 0.12);
         }
         
-        /* ===== RESET ===== */
+        /* ===== RESET & BASE ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -573,6 +573,7 @@
             transform: rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
         }
         
+        /* ===== FLOATING ICONS ===== */
         .floating-icons {
             position: absolute;
             inset: 0;
@@ -1431,7 +1432,7 @@
 
     <script>
         // ============================================================
-        // PARTICLES
+        // PARTICLES (Sama)
         // ============================================================
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -1568,6 +1569,26 @@
             setTimeout(() => {
                 document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
             }, 300);
+        }
+
+        // ============================================================
+        // FUNGSI GET SKILL ICON (VARIATIF)
+        // ============================================================
+        function getSkillIcon(name) {
+            const icons = {
+                'Router & Switch': '<i class="fas fa-route"></i>',
+                'WLAN': '<i class="fas fa-signal"></i>',
+                'WLAN (Jaringan Lokal)': '<i class="fas fa-signal"></i>',
+                'Microsoft Excel': '<i class="fas fa-table"></i>',
+                'Microsoft Word': '<i class="fas fa-pen-fancy"></i>',
+                'Microsoft PowerPoint': '<i class="fas fa-chart-simple"></i>',
+                'Visio': '<i class="fas fa-diagram-project"></i>',
+                'HTML': '<i class="fas fa-code"></i>',
+                'Linux': '<i class="fas fa-terminal"></i>',
+                'Linux (Dasar)': '<i class="fas fa-terminal"></i>',
+                'Python': '<i class="fas fa-robot"></i>'
+            };
+            return icons[name] || '<i class="fas fa-circle"></i>';
         }
 
         // ============================================================
@@ -1721,7 +1742,7 @@
         }
 
         // ============================================================
-        // RENDER ABOUT (IKON VARIATIF)
+        // RENDER ABOUT (IKON VARIATIF - HARD SKILL + SOFT SKILL)
         // ============================================================
         function renderAbout() {
             const a = data.about;
@@ -1745,7 +1766,7 @@
                                 ${(a.hardSkills || []).map(s => `
                                     <div class="skill-item">
                                         <div class="skill-label">
-                                            <span>${s.name}</span>
+                                            <span>${getSkillIcon(s.name)} ${s.name}</span>
                                             <span class="skill-percent">${s.percent}%</span>
                                         </div>
                                         <div class="skill-bar">
@@ -1757,7 +1778,7 @@
                             <div>
                                 <h4><i class="fas fa-brain"></i> Soft Skill</h4>
                                 <div class="soft-skills">
-                                    ${(a.softSkills || []).map(s => `<span><i class="fas fa-zap"></i> ${s}</span>`).join('')}
+                                    ${(a.softSkills || []).map(s => `<span><i class="fas fa-bolt"></i> ${s}</span>`).join('')}
                                 </div>
                             </div>
                         </div>
@@ -1767,7 +1788,7 @@
         }
 
         // ============================================================
-        // RENDER PROJECTS (IKON VARIATIF)
+        // RENDER PROJECTS (IKON VARIATIF - TKJ & SIJA)
         // ============================================================
         function renderProjects() {
             const projects = data.projects || [];
@@ -1869,7 +1890,7 @@
         }
 
         // ============================================================
-        // RENDER CERTIFICATES (IKON VARIATIF)
+        // RENDER CERTIFICATES
         // ============================================================
         function renderCertificates() {
             const certs = data.certificates || [];
