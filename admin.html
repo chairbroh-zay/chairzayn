@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin · Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        h1 span {
+            color: #00BCD4;
+        }
+        p.sub {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #111;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #00BCD4;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-primary {
+            background: #00BCD4;
+            color: #000;
+        }
+        .btn-primary:hover {
+            background: #26A69A;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #aaa;
+        }
+        .btn-outline:hover {
+            border-color: #00BCD4;
+            color: #fff;
+        }
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 12px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .card {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        .card p {
+            color: #888;
+            font-size: 13px;
+        }
+        .card .actions {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .flex {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #4CAF50;
+        }
+        .status i {
+            font-size: 8px;
+        }
+        .token-info {
+            background: #1a1a2e;
+            border: 1px solid #2d2d44;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 16px;
+        }
+        .token-info code {
+            color: #00BCD4;
+            word-break: break-all;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #2d2d44;
+            color: #aaa;
+        }
+        .badge-tkj { background: #1a2a3a; color: #4FC3F7; }
+        .badge-sija { background: #1a2a1a; color: #81C784; }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            z-index: 999;
+            animation: slideUp 0.3s ease;
+        }
+        .toast-success { background: #2e7d32; color: #fff; }
+        .toast-error { background: #c62828; color: #fff; }
+        .toast-info { background: #0d47a1; color: #fff; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="app">
+    <!-- ===== LOGIN ===== -->
+    <div id="loginPage">
+        <h1>Admin <span>Panel</span></h1>
+        <p class="sub">Masukkan password untuk mengelola portfolio</p>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Masukkan password..." onkeydown="if(event.key==='Enter') login()" />
+        </div>
+        <button class="btn btn-primary" onclick="login()" style="width:100%;">
+            <i class="fas fa-lock"></i> Login
+        </button>
+        <div style="margin-top:12px;text-align:center;color:#555;font-size:12px;">
+            Default password: <code style="color:#00BCD4;">admin123</code>
+        </div>
+    </div>
+
+    <!-- ===== DASHBOARD ===== -->
+    <div id="dashboardPage" class="hidden">
+        <div class="flex-between" style="margin-bottom:20px;">
+            <div>
+                <h1>Dashboard <span>Admin</span></h1>
+                <p class="sub" style="margin-bottom:0;">Kelola data portfolio</p>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+
+        <!-- Token Info -->
+        <div class="token-info">
+            <i class="fas fa-key" style="color:#00BCD4;"></i>
+            GitHub Token: <code id="tokenDisplay">••••••••</code>
+            <button class="btn btn-outline btn-sm" onclick="showTokenModal()" style="margin-left:8px;">
+                <i class="fas fa-edit"></i> Ganti
+            </button>
+        </div>
+
+        <!-- Stats -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:20px;">
+            <div class="card" style="text-align:center;padding:16px;">
+                <div style="font-size:24px;font-weight:900;color:#00BCD4;" id="statProjects">0</div>
+                <div style="color:#888;font-size:13px;">Projects</div>
+            </div>
+            <div class="card" style="text-align:center;padding:16px;">
+                <div style="font-size:24px;font-weight:900;color:#00BCD4;" id="statCertificates">0</div>
+                <div style="color:#888;font-size:13px;">Sertifikat</div>
+            </div>
+            <div class="card" style="text-align:center;padding:16px;">
+                <div style="font-size:24px;font-weight:900;color:#00BCD4;" id="statSkills">0</div>
+                <div style="color:#888;font-size:13px;">Hard Skill</div>
+            </div>
+        </div>
+
+        <!-- ===== TABS ===== -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:12px;">
+            <button class="btn btn-primary btn-sm" onclick="showTab('projects')" id="tabProjects">📁 Projects</button>
+            <button class="btn btn-outline btn-sm" onclick="showTab('certificates')" id="tabCertificates">📜 Certificates</button>
+            <button class="btn btn-outline btn-sm" onclick="showTab('home')" id="tabHome">🏠 Home</button>
+            <button class="btn btn-outline btn-sm" onclick="showTab('about')" id="tabAbout">👤 About</button>
+        </div>
+
+        <!-- ===== TAB: PROJECTS ===== -->
+        <div id="tabContentProjects">
+            <div class="flex-between" style="margin-bottom:16px;">
+                <h3 style="font-size:18px;"><i class="fas fa-folder-open"></i> Projects</h3>
+                <button class="btn btn-primary btn-sm" onclick="showAddProject()">
+                    <i class="fas fa-plus"></i> Tambah
+                </button>
+            </div>
+            <div id="projectList"></div>
+        </div>
+
+        <!-- ===== TAB: CERTIFICATES ===== -->
+        <div id="tabContentCertificates" class="hidden">
+            <div class="flex-between" style="margin-bottom:16px;">
+                <h3 style="font-size:18px;"><i class="fas fa-certificate"></i> Certificates</h3>
+                <button class="btn btn-primary btn-sm" onclick="showAddCertificate()">
+                    <i class="fas fa-plus"></i> Tambah
+                </button>
+            </div>
+            <div id="certificateList"></div>
+        </div>
+
+        <!-- ===== TAB: HOME ===== -->
+        <div id="tabContentHome" class="hidden">
+            <h3 style="font-size:18px;margin-bottom:16px;"><i class="fas fa-home"></i> Edit Home</h3>
+            <div id="homeForm"></div>
+        </div>
+
+        <!-- ===== TAB: ABOUT ===== -->
+        <div id="tabContentAbout" class="hidden">
+            <h3 style="font-size:18px;margin-bottom:16px;"><i class="fas fa-user"></i> Edit About</h3>
+            <div id="aboutForm"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div id="toastContainer"></div>
+
+<!-- ===== MODAL ===== -->
+<div id="modalOverlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:999;display:none;justify-content:center;align-items:center;padding:20px;">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;" id="modalContent">
+        <!-- Dinamis -->
+    </div>
+</div>
+
+<script>
+// ============================================================
+// KONFIGURASI
+// ============================================================
+const REPO_OWNER = 'chairbroh-zay';      // Ganti dengan username GitHub mu
+const REPO_NAME = 'portfolio-data';      // Ganti dengan nama repo mu
+const FILE_PATH = 'data.json';
+
+// Password (hash SHA-256 dari 'admin123')
+const ADMIN_PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+
+let GITHUB_TOKEN = localStorage.getItem('github_token') || '';
+let currentData = null;
+let isLoggedIn = false;
+
+// ============================================================
+// SHA-256 (untuk hash password)
+// ============================================================
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// ============================================================
+// TOAST NOTIFICATION
+// ============================================================
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    container.appendChild(toast);
+    setTimeout(() => { toast.remove(); }, 3000);
+}
+
+// ============================================================
+// MODAL
+// ============================================================
+function showModal(html) {
+    const overlay = document.getElementById('modalOverlay');
+    document.getElementById('modalContent').innerHTML = html;
+    overlay.style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').style.display = 'none';
+}
+
+// ============================================================
+// GITHUB API
+// ============================================================
+async function getData() {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+    const res = await fetch(url, {
+        headers: GITHUB_TOKEN ? { 'Authorization': `token ${GITHUB_TOKEN}` } : {}
+    });
+    if (!res.ok) throw new Error('Gagal mengambil data dari GitHub');
+    const data = await res.json();
+    const content = atob(data.content);
+    return { data: JSON.parse(content), sha: data.sha };
+}
+
+async function saveData(data, sha) {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+    const content = btoa(JSON.stringify(data, null, 2));
+    const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `token ${GITHUB_TOKEN}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            message: 'Update portfolio data via admin panel',
+            content: content,
+            sha: sha
+        })
+    });
+    if (!res.ok) throw new Error('Gagal menyimpan data ke GitHub');
+    return await res.json();
+}
+
+// ============================================================
+// LOGIN
+// ============================================================
+async function login() {
+    const password = document.getElementById('loginPassword').value;
+    const hash = await sha256(password);
+    if (hash === ADMIN_PASSWORD_HASH) {
+        isLoggedIn = true;
+        localStorage.setItem('isLoggedIn', 'true');
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('dashboardPage').classList.remove('hidden');
+        document.getElementById('tokenDisplay').textContent = GITHUB_TOKEN || 'Belum diisi';
+        loadData();
+        showToast('Login berhasil!', 'success');
+    } else {
+        showToast('Password salah!', 'error');
+    }
+}
+
+function logout() {
+    isLoggedIn = false;
+    localStorage.removeItem('isLoggedIn');
+    document.getElementById('loginPage').classList.remove('hidden');
+    document.getElementById('dashboardPage').classList.add('hidden');
+    showToast('Logout berhasil', 'info');
+}
+
+function showTokenModal() {
+    showModal(`
+        <h3 style="margin-bottom:12px;">Ganti GitHub Token</h3>
+        <p style="color:#888;font-size:13px;margin-bottom:16px;">
+            Masukkan Personal Access Token dari GitHub.
+            <br>Scope yang dibutuhkan: <strong>repo</strong>
+        </p>
+        <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:#111;color:#fff;font-size:14px;" />
+        <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn btn-primary" onclick="saveToken()">Simpan</button>
+            <button class="btn btn-outline" onclick="closeModal()">Batal</button>
+        </div>
+    `);
+}
+
+function saveToken() {
+    const token = document.getElementById('tokenInput').value.trim();
+    if (token) {
+        GITHUB_TOKEN = token;
+        localStorage.setItem('github_token', token);
+        document.getElementById('tokenDisplay').textContent = token.substring(0, 8) + '••••••••';
+        closeModal();
+        showToast('Token berhasil disimpan!', 'success');
+        loadData();
+    } else {
+        showToast('Token tidak boleh kosong!', 'error');
+    }
+}
+
+// ============================================================
+// LOAD DATA
+// ============================================================
+async function loadData() {
+    try {
+        const result = await getData();
+        currentData = result.data;
+        renderDashboard();
+        renderProjects();
+        renderCertificates();
+        renderHomeForm();
+        renderAboutForm();
+        updateStats();
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+function updateStats() {
+    if (!currentData) return;
+    document.getElementById('statProjects').textContent = currentData.projects?.length || 0;
+    document.getElementById('statCertificates').textContent = currentData.certificates?.length || 0;
+    document.getElementById('statSkills').textContent = currentData.about?.hardSkills?.length || 0;
+}
+
+// ============================================================
+// RENDER PROJECTS
+// ============================================================
+function renderProjects() {
+    const list = document.getElementById('projectList');
+    if (!currentData?.projects) return;
+    
+    if (currentData.projects.length === 0) {
+        list.innerHTML = `<p style="color:#888;text-align:center;padding:20px;">Belum ada project. Tambahkan project baru!</p>`;
+        return;
+    }
+    
+    list.innerHTML = currentData.projects.map((p, index) => `
+        <div class="card">
+            <div class="flex-between">
+                <div>
+                    <h3>${p.title}</h3>
+                    <p>${p.desc?.substring(0, 80)}${p.desc?.length > 80 ? '...' : ''}</p>
+                    <div style="margin-top:4px;">
+                        <span class="badge ${p.category === 'TKJ' ? 'badge-tkj' : 'badge-sija'}">${p.category}</span>
+                        <span class="badge">${p.subCategory || 'General'}</span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-outline btn-sm" onclick="editProject(${index})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteProject(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ============================================================
+// RENDER CERTIFICATES
+// ============================================================
+function renderCertificates() {
+    const list = document.getElementById('certificateList');
+    if (!currentData?.certificates) return;
+    
+    if (currentData.certificates.length === 0) {
+        list.innerHTML = `<p style="color:#888;text-align:center;padding:20px;">Belum ada sertifikat.</p>`;
+        return;
+    }
+    
+    list.innerHTML = currentData.certificates.map((c, index) => `
+        <div class="card">
+            <div class="flex-between">
+                <div>
+                    <h3><i class="fas ${c.icon}"></i> ${c.name}</h3>
+                    <p>${c.level} · ${c.desc}</p>
+                </div>
+                <button class="btn btn-danger btn-sm" onclick="deleteCertificate(${index})">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ============================================================
+// RENDER HOME FORM
+// ============================================================
+function renderHomeForm() {
+    const form = document.getElementById('homeForm');
+    if (!currentData?.home) return;
+    const h = currentData.home;
+    form.innerHTML = `
+        <div class="form-group">
+            <label>Nama</label>
+            <input type="text" id="homeName" value="${h.name || ''}" />
+        </div>
+        <div class="form-group">
+            <label>TTL</label>
+            <input type="text" id="homeTtl" value="${h.ttl || ''}" />
+        </div>
+        <div class="form-group">
+            <label>Sekolah</label>
+            <input type="text" id="homeSchool" value="${h.school || ''}" />
+        </div>
+        <div class="form-group">
+            <label>Jurusan</label>
+            <input type="text" id="homeMajor" value="${h.major || ''}" />
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="homeEmail" value="${h.email || ''}" />
+        </div>
+        <div class="form-group">
+            <label>WhatsApp</label>
+            <input type="text" id="homePhone" value="${h.phone || ''}" />
+        </div>
+        <div class="form-group">
+            <label>TikTok</label>
+            <input type="text" id="homeTiktok" value="${h.tiktok || ''}" />
+        </div>
+        <div class="form-group">
+            <label>CV Link</label>
+            <input type="text" id="homeCvLink" value="${h.cvLink || ''}" />
+        </div>
+        <div class="form-group">
+            <label>Badge</label>
+            <input type="text" id="homeBadge" value="${h.badge || ''}" />
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            <input type="text" id="homeStatus" value="${h.status || ''}" />
+        </div>
+        <button class="btn btn-primary" onclick="saveHome()">
+            <i class="fas fa-save"></i> Simpan Home
+        </button>
+    `;
+}
+
+// ============================================================
+// RENDER ABOUT FORM
+// ============================================================
+function renderAboutForm() {
+    const form = document.getElementById('aboutForm');
+    if (!currentData?.about) return;
+    const a = currentData.about;
+    form.innerHTML = `
+        <div class="form-group">
+            <label>Bio</label>
+            <textarea id="aboutBio" rows="6">${a.bio || ''}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Motto</label>
+            <input type="text" id="aboutMotto" value="${a.motto || ''}" />
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;margin-top:8px;">
+            <h4 style="margin-bottom:8px;">Hard Skills</h4>
+            <div id="hardSkillsList">
+                ${(a.hardSkills || []).map((s, i) => `
+                    <div style="display:flex;gap:8px;margin-bottom:6px;align-items:center;">
+                        <input type="text" id="hsName_${i}" value="${s.name}" placeholder="Nama skill" style="flex:1;" />
+                        <input type="number" id="hsPercent_${i}" value="${s.percent}" placeholder="%" style="width:60px;" />
+                        <button class="btn btn-danger btn-sm" onclick="removeHardSkill(${i})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `).join('')}
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="addHardSkill()">
+                <i class="fas fa-plus"></i> Tambah Skill
+            </button>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;margin-top:16px;">
+            <h4 style="margin-bottom:8px;">Soft Skills</h4>
+            <div id="softSkillsList">
+                ${(a.softSkills || []).map((s, i) => `
+                    <div style="display:flex;gap:8px;margin-bottom:6px;align-items:center;">
+                        <input type="text" id="ssName_${i}" value="${s}" placeholder="Soft skill" style="flex:1;" />
+                        <button class="btn btn-danger btn-sm" onclick="removeSoftSkill(${i})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `).join('')}
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="addSoftSkill()">
+                <i class="fas fa-plus"></i> Tambah Soft Skill
+            </button>
+        </div>
+        <button class="btn btn-primary" onclick="saveAbout()" style="margin-top:16px;">
+            <i class="fas fa-save"></i> Simpan About
+        </button>
+    `;
+}
+
+// ============================================================
+// CRUD PROJECTS
+// ============================================================
+function showAddProject() {
+    showModal(`
+        <h3 style="margin-bottom:12px;">Tambah Project</h3>
+        <div class="form-group">
+            <label>Judul</label>
+            <input type="text" id="addProjectTitle" placeholder="Nama project" />
+        </div>
+        <div class="form-group">
+            <label>Kategori</label>
+            <select id="addProjectCategory">
+                <option value="TKJ">TKJ</option>
+                <option value="SIJA">SIJA</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Sub Kategori</label>
+            <input type="text" id="addProjectSub" placeholder="Konsentrasi Keahlian..." />
+        </div>
+        <div class="form-group">
+            <label>Link</label>
+            <input type="text" id="addProjectLink" placeholder="https://..." />
+        </div>
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea id="addProjectDesc" rows="3" placeholder="Deskripsi project"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Teknologi (pisahkan dengan koma)</label>
+            <input type="text" id="addProjectTech" placeholder="Cisco, VLAN, Routing" />
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+            <button class="btn btn-primary" onclick="addProject()">Tambah</button>
+            <button class="btn btn-outline" onclick="closeModal()">Batal</button>
+        </div>
+    `);
+}
+
+async function addProject() {
+    const title = document.getElementById('addProjectTitle').value.trim();
+    const category = document.getElementById('addProjectCategory').value;
+    const sub = document.getElementById('addProjectSub').value.trim();
+    const link = document.getElementById('addProjectLink').value.trim();
+    const desc = document.getElementById('addProjectDesc').value.trim();
+    const tech = document.getElementById('addProjectTech').value.split(',').map(t => t.trim()).filter(Boolean);
+    
+    if (!title) { showToast('Judul wajib diisi!', 'error'); return; }
+    if (!link) { showToast('Link wajib diisi!', 'error'); return; }
+    
+    try {
+        const result = await getData();
+        const data = result.data;
+        const sha = result.sha;
+        
+        data.projects.push({
+            id: Date.now(),
+            title,
+            category,
+            subCategory: sub || 'General',
+            link,
+            image: '',
+            desc: desc || 'Tidak ada deskripsi',
+            tech: tech.length ? tech : ['General'],
+            date: new Date().getFullYear().toString()
+        });
+        
+        await saveData(data, sha);
+        currentData = data;
+        closeModal();
+        renderProjects();
+        updateStats();
+        showToast('Project berhasil ditambahkan!', 'success');
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+function editProject(index) {
+    const p = currentData.projects[index];
+    showModal(`
+        <h3 style="margin-bottom:12px;">Edit Project</h3>
+        <div class="form-group">
+            <label>Judul</label>
+            <input type="text" id="editProjectTitle" value="${p.title || ''}" />
+        </div>
+        <div class="form-group">
+            <label>Kategori</label>
+            <select id="editProjectCategory">
+                <option value="TKJ" ${p.category === 'TKJ' ? 'selected' : ''}>TKJ</option>
+                <option value="SIJA" ${p.category === 'SIJA' ? 'selected' : ''}>SIJA</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Sub Kategori</label>
+            <input type="text" id="editProjectSub" value="${p.subCategory || ''}" />
+        </div>
+        <div class="form-group">
+            <label>Link</label>
+            <input type="text" id="editProjectLink" value="${p.link || ''}" />
+        </div>
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea id="editProjectDesc" rows="3">${p.desc || ''}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Teknologi (pisahkan dengan koma)</label>
+            <input type="text" id="editProjectTech" value="${(p.tech || []).join(', ')}" />
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+            <button class="btn btn-primary" onclick="updateProject(${index})">Simpan</button>
+            <button class="btn btn-outline" onclick="closeModal()">Batal</button>
+        </div>
+    `);
+}
+
+async function updateProject(index) {
+    const title = document.getElementById('editProjectTitle').value.trim();
+    const category = document.getElementById('editProjectCategory').value;
+    const sub = document.getElementById('editProjectSub').value.trim();
+    const link = document.getElementById('editProjectLink').value.trim();
+    const desc = document.getElementById('editProjectDesc').value.trim();
+    const tech = document.getElementById('editProjectTech').value.split(',').map(t => t.trim()).filter(Boolean);
+    
+    if (!title) { showToast('Judul wajib diisi!', 'error'); return; }
+    if (!link) { showToast('Link wajib diisi!', 'error'); return; }
+    
+    try {
+        const result = await getData();
+        const data = result.data;
+        const sha = result.sha;
+        
+        data.projects[index] = {
+            ...data.projects[index],
+            title,
+            category,
+            subCategory: sub || 'General',
+            link,
+            desc: desc || 'Tidak ada deskripsi',
+            tech: tech.length ? tech : ['General']
+        };
+        
+        await saveData(data, sha);
+        currentData = data;
+        closeModal();
+        renderProjects();
+        showToast('Project berhasil diupdate!', 'success');
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+async function deleteProject(index) {
+    if (!confirm('Yakin ingin menghapus project ini?')) return;
+    
+    try {
+        const result = await getData();
+        const data = result.data;
+        const sha = result.sha;
+        
+        data.projects.splice(index, 1);
+        await saveData(data, sha);
+        currentData = data;
+        renderProjects();
+        updateStats();
+        showToast('Project berhasil dihapus!', 'success');
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+// ============================================================
+// CRUD CERTIFICATES
+// ============================================================
+function showAddCertificate() {
+    showModal(`
+        <h3 style="margin-bottom:12px;">Tambah Sertifikat</h3>
+        <div class="form-group">
+            <label>Nama Sertifikat</label>
+            <input type="text" id="addCertName" placeholder="Microsoft Excel" />
+        </div>
+        <div class="form-group">
+            <label>Icon (Font Awesome)</label>
+            <input type="text" id="addCertIcon" placeholder="fa-file-excel" />
+        </div>
+        <div class="form-group">
+            <label>Level</label>
+            <input type="text" id="addCertLevel" placeholder="Mahir" />
+        </div>
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <input type="text" id="addCertDesc" placeholder="Formula & Pivot" />
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+            <button class="btn btn-primary" onclick="addCertificate()">Tambah</button>
+            <button class="btn btn-outline" onclick="closeModal()">Batal</button>
+        </div>
+    `);
+}
+
+async function addCertificate() {
+    const name = document.getElementById('addCertName').value.trim();
+    const icon = document.getElementById('addCertIcon').value.trim() || 'fa-certificate';
+    const level = document.getElementById('addCertLevel').value.trim() || 'Mahir';
+    const desc = document.getElementById('addCertDesc').value.trim() || '';
+    
+    if (!name) { showToast('Nama sertifikat wajib diisi!', 'error'); return; }
+    
+    try {
+        const result = await getData();
+        const data = result.data;
+        const sha = result.sha;
+        
+        data.certificates.push({
+            id: Date.now(),
+            name,
+            icon,
+            level,
+            desc
+        });
+        
+        await saveData(data, sha);
+        currentData = data;
+        closeModal();
+        renderCertificates();
+        updateStats();
+        showToast('Sertifikat berhasil ditambahkan!', 'success');
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+async function deleteCertificate(index) {
+    if (!confirm('Yakin ingin menghapus sertifikat ini?')) return;
+    
+    try {
+        const result = await getData();
+        const data = result.data;
+        const sha = result.sha;
+        
+        data.certificates.splice(index, 1);
+        await saveData(data, sha);
+        currentData = data;
+        renderCertificates();
+        updateStats();
+        showToast('Sertifikat berhasil dihapus!', 'success');
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+// ============================================================
+// SAVE HOME
+// ============================================================
+async function saveHome() {
+    try {
+        const result = await getData();
+        const data = result.data;
+        const sha = result.sha;
+        
+        data.home = {
+            name: document.getElementById('homeName').value.trim(),
+            ttl: document.getElementById('homeTtl').value.trim(),
+            school: document.getElementById('homeSchool').value.trim(),
+            major: document.getElementById('homeMajor').value.trim(),
+            email: document.getElementById('homeEmail').value.trim(),
+            phone: document.getElementById('homePhone').value.trim(),
+            tiktok: document.getElementById('homeTiktok').value.trim(),
+            cvLink: document.getElementById('homeCvLink').value.trim(),
+            badge: document.getElementById('homeBadge').value.trim(),
+            status: document.getElementById('homeStatus').value.trim()
+        };
+        
+        await saveData(data, sha);
+        currentData = data;
+        showToast('Home berhasil diupdate!', 'success');
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+// ============================================================
+// SAVE ABOUT
+// ============================================================
+async function saveAbout() {
+    try {
+        const result = await getData();
+        const data = result.data;
+        const sha = result.sha;
+        
+        // Collect hard skills
+        const hardSkills = [];
+        document.querySelectorAll('#hardSkillsList > div').forEach((div, i) => {
+            const name = document.getElementById(`hsName_${i}`)?.value.trim();
+            const percent = parseInt(document.getElementById(`hsPercent_${i}`)?.value);
+            if (name) hardSkills.push({ name, percent: percent || 0 });
+        });
+        
+        // Collect soft skills
+        const softSkills = [];
+        document.querySelectorAll('#softSkillsList > div').forEach((div, i) => {
+            const name = document.getElementById(`ssName_${i}`)?.value.trim();
+            if (name) softSkills.push(name);
+        });
+        
+        data.about = {
+            bio: document.getElementById('aboutBio').value.trim(),
+            motto: document.getElementById('aboutMotto').value.trim(),
+            hardSkills: hardSkills.length ? hardSkills : data.about.hardSkills,
+            softSkills: softSkills.length ? softSkills : data.about.softSkills
+        };
+        
+        await saveData(data, sha);
+        currentData = data;
+        updateStats();
+        showToast('About berhasil diupdate!', 'success');
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+// ============================================================
+// HARD SKILL / SOFT SKILL HELPERS
+// ============================================================
+function addHardSkill() {
+    const list = document.getElementById('hardSkillsList');
+    const index = list.children.length;
+    const div = document.createElement('div');
+    div.style.cssText = 'display:flex;gap:8px;margin-bottom:6px;align-items:center;';
+    div.innerHTML = `
+        <input type="text" id="hsName_${index}" placeholder="Nama skill" style="flex:1;padding:8px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:#111;color:#fff;" />
+        <input type="number" id="hsPercent_${index}" placeholder="%" style="width:60px;padding:8px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:#111;color:#fff;" />
+        <button class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    list.appendChild(div);
+}
+
+function removeHardSkill(index) {
+    const list = document.getElementById('hardSkillsList');
+    if (list.children.length > 1) {
+        list.children[index]?.remove();
+    } else {
+        showToast('Minimal 1 hard skill harus ada!', 'error');
+    }
+}
+
+function addSoftSkill() {
+    const list = document.getElementById('softSkillsList');
+    const index = list.children.length;
+    const div = document.createElement('div');
+    div.style.cssText = 'display:flex;gap:8px;margin-bottom:6px;align-items:center;';
+    div.innerHTML = `
+        <input type="text" id="ssName_${index}" placeholder="Soft skill" style="flex:1;padding:8px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:#111;color:#fff;" />
+        <button class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    list.appendChild(div);
+}
+
+function removeSoftSkill(index) {
+    const list = document.getElementById('softSkillsList');
+    if (list.children.length > 1) {
+        list.children[index]?.remove();
+    } else {
+        showToast('Minimal 1 soft skill harus ada!', 'error');
+    }
+}
+
+// ============================================================
+// TAB NAVIGATION
+// ============================================================
+function showTab(tab) {
+    const tabs = ['projects', 'certificates', 'home', 'about'];
+    const btnIds = ['tabProjects', 'tabCertificates', 'tabHome', 'tabAbout'];
+    const contentIds = ['tabContentProjects', 'tabContentCertificates', 'tabContentHome', 'tabContentAbout'];
+    
+    tabs.forEach((t, i) => {
+        const btn = document.getElementById(btnIds[i]);
+        const content = document.getElementById(contentIds[i]);
+        if (t === tab) {
+            btn.className = 'btn btn-primary btn-sm';
+            content.classList.remove('hidden');
+        } else {
+            btn.className = 'btn btn-outline btn-sm';
+            content.classList.add('hidden');
+        }
+    });
+}
+
+// ============================================================
+// RENDER DASHBOARD (tampilan awal)
+// ============================================================
+function renderDashboard() {
+    // Tampilkan tab Projects default
+    showTab('projects');
+}
+
+// ============================================================
+// CHECK LOGIN STATUS
+// ============================================================
+function checkLogin() {
+    const saved = localStorage.getItem('isLoggedIn');
+    if (saved === 'true') {
+        // Coba load data dulu, jika gagal minta login ulang
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('dashboardPage').classList.remove('hidden');
+        document.getElementById('tokenDisplay').textContent = GITHUB_TOKEN || 'Belum diisi';
+        isLoggedIn = true;
+        loadData();
+    }
+}
+
+// ============================================================
+// INIT
+// ============================================================
+checkLogin();
+
+// Close modal when clicking outside
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+
+console.log('🚀 Admin Panel siap!');
+console.log('📁 Repository:', `${REPO_OWNER}/${REPO_NAME}`);
+console.log('🔑 Token:', GITHUB_TOKEN ? '✅ Tersimpan' : '❌ Belum diisi');
+
+</script>
+</body>
+</html>

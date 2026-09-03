@@ -1,0 +1,106 @@
+{
+  "home": {
+    "name": "Chairil Ibrahim",
+    "ttl": "3 Februari 2009 (17 tahun)",
+    "school": "SMKN 1 Losarang",
+    "major": "TJKT - Teknik Jaringan Komputer & Telekomunikasi",
+    "email": "chairbroh50@gmail.com",
+    "phone": "085926404716",
+    "tiktok": "@psyonic",
+    "cvLink": "cvchairil.netlify.app",
+    "badge": "Tersedia untuk kolaborasi",
+    "status": "Aktif · Siap Bekerja"
+  },
+  "about": {
+    "bio": "Nama lengkap saya Chairil Ibrahim. Saya lahir pada tanggal 3 Februari 2009, saat ini berusia 17 tahun. Saya berjenis kelamin laki-laki, berkewarganegaraan Indonesia, dan beragama Islam. Saat ini saya sedang menempuh pendidikan di SMKN 1 Losarang, dengan jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT). Saya memiliki ketertarikan besar terhadap dunia teknologi, khususnya di bidang jaringan komputer dan pengembangan web. Saya memiliki kebiasaan untuk menyelesaikan tugas dengan prioritas tinggi. Jika ada pekerjaan yang harus diselesaikan, saya akan mengerjakannya terlebih dahulu, bahkan jika harus begadang. Saya percaya bahwa kedisiplinan, konsistensi, dan rasa ingin tahu yang tinggi adalah kunci untuk terus berkembang. Cita-cita saya adalah menjadi seorang profesional di bidang jaringan dan teknologi informasi yang mampu memberikan solusi digital terbaik bagi masyarakat dan industri.",
+    "motto": "Solusi Digital, Hasil Maksimal.",
+    "hardSkills": [
+      { "name": "Router & Switch", "percent": 89 },
+      { "name": "WLAN (Jaringan Lokal)", "percent": 86 },
+      { "name": "Microsoft Excel", "percent": 65 },
+      { "name": "Microsoft Word", "percent": 65 },
+      { "name": "Microsoft PowerPoint", "percent": 60 },
+      { "name": "Visio", "percent": 60 },
+      { "name": "HTML", "percent": 50 },
+      { "name": "Linux (Dasar)", "percent": 40 },
+      { "name": "Python", "percent": 18 }
+    ],
+    "softSkills": [
+      "Cepat Paham (1 hari)",
+      "Disiplin",
+      "Logis & Realistis",
+      "Kreatif",
+      "Imajinasi Tinggi",
+      "Target Oriented"
+    ]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "Perencanaan Jaringan di Lab Komputer",
+      "category": "TKJ",
+      "subCategory": "Konsentrasi Keahlian Komputer dan Jaringan",
+      "link": "https://1drv.ms/p/c/9002a09ef52e2f36/IQDh2TVA5VGFQrvOKXHmFsioAW8uFHosG8K6VvXvg8q2jQM?e=3hkDLR",
+      "image": "",
+      "desc": "Perencanaan topologi jaringan, konfigurasi IP, dan simulasi jaringan untuk laboratorium komputer.",
+      "tech": ["Cisco", "Topologi", "Jaringan"],
+      "date": "2026"
+    },
+    {
+      "id": 2,
+      "title": "Keamanan dan Jaringan (Firewall)",
+      "category": "TKJ",
+      "subCategory": "Konsentrasi Keahlian Komputer dan Jaringan",
+      "link": "https://1drv.ms/b/c/9002a09ef52e2f36/IQCDWgDmNvwSQqodpBC0JoCnAZ2ot81-Mq9TmE6Grby-e0w?e=jdDhRb",
+      "image": "",
+      "desc": "Implementasi firewall untuk keamanan jaringan, konfigurasi aturan, dan proteksi dari ancaman.",
+      "tech": ["Firewall", "Security", "Jaringan"],
+      "date": "2026"
+    },
+    {
+      "id": 3,
+      "title": "Membuat CV",
+      "category": "SIJA",
+      "subCategory": "Sistem Informasi, Jaringan dan Aplikasi",
+      "link": "https://cvchairil.netlify.app",
+      "image": "CV.jpg",
+      "desc": "Pembuatan CV profesional online menggunakan HTML, CSS, dan JavaScript. Tersedia dalam versi digital.",
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "date": "2026"
+    },
+    {
+      "id": 4,
+      "title": "Membuat Portofolio",
+      "category": "SIJA",
+      "subCategory": "Sistem Informasi, Jaringan dan Aplikasi",
+      "link": "https://chairbroh-zay.github.io/chairzayn/",
+      "image": "porto.jpg",
+      "desc": "Pengembangan website portofolio pribadi sebagai showcase project dan pengalaman.",
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "date": "2026"
+    }
+  ],
+  "certificates": [
+    {
+      "id": 1,
+      "name": "Microsoft Excel",
+      "icon": "fa-file-excel",
+      "level": "Mahir",
+      "desc": "Formula & Pivot"
+    },
+    {
+      "id": 2,
+      "name": "Microsoft PowerPoint",
+      "icon": "fa-file-powerpoint",
+      "level": "Mahir",
+      "desc": "Presentasi & Animasi"
+    },
+    {
+      "id": 3,
+      "name": "Microsoft Word",
+      "icon": "fa-file-word",
+      "level": "Mahir",
+      "desc": "Formatting & Mail Merge"
+    }
+  ]
+}
