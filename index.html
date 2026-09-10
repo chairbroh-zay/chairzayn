@@ -36,6 +36,8 @@
             --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --max-width: 1100px;
             --navbar-height: 64px;
+            --skill-card-width: 180px;
+            --skill-gap: 16px;
         }
 
         /* ============================================================
@@ -136,7 +138,7 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* ============================================================
-           NAVBAR (SAMA SEPERTI SEBELUMNYA)
+           NAVBAR
            ============================================================ */
         .navbar {
             position: fixed;
@@ -519,7 +521,7 @@
         .divider .icon { color: var(--gradient-start); font-size: 14px; }
 
         /* ============================================================
-           HERO (SAMA)
+           HERO
            ============================================================ */
         .hero {
             min-height: 60vh;
@@ -805,7 +807,7 @@
         .counter-item .label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
 
         /* ============================================================
-           PROJECT HOME (SAMA)
+           PROJECT HOME
            ============================================================ */
         .project-grid-home {
             display: grid;
@@ -912,7 +914,7 @@
         .view-all-projects:hover i { transform: translateX(4px); }
 
         /* ============================================================
-           CONTACT (SAMA)
+           CONTACT
            ============================================================ */
         .contact-section {
             padding: 30px 0 10px;
@@ -945,7 +947,7 @@
         .contact-item i { font-size: 16px; color: var(--gradient-start); }
 
         /* ============================================================
-           ABOUT (Hard Skill jadi CAROUSEL)
+           ABOUT - HARD SKILL INFINITE LOOP
            ============================================================ */
         .about-grid {
             display: grid;
@@ -979,26 +981,36 @@
         }
         .skills-section h4 { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
 
-        /* ===== CAROUSEL HARD SKILL ===== */
-        .skill-carousel-wrapper {
+        /* ===== INFINITE LOOP CAROUSEL ===== */
+        .skill-loop-wrapper {
             position: relative;
             overflow: hidden;
             width: 100%;
             border-radius: var(--radius-md);
-            padding: 4px 0;
+            padding: 6px 0;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
 
-        .skill-carousel-track {
+        .skill-loop-track {
             display: flex;
-            gap: 16px;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: var(--skill-gap);
+            width: max-content;
+            animation: scrollLeft var(--scroll-duration, 30s) linear infinite;
             will-change: transform;
-            padding: 4px 0;
+        }
+
+        .skill-loop-track.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .skill-card {
-            min-width: 180px;
-            max-width: 200px;
+            width: var(--skill-card-width);
             flex: 0 0 auto;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -1008,10 +1020,15 @@
             backdrop-filter: blur(10px);
             transition: var(--transition-bounce);
             cursor: default;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
         }
 
         .skill-card:hover {
-            transform: translateY(-4px) scale(1.02);
+            transform: translateY(-4px) scale(1.03);
             border-color: var(--gradient-start);
             background: var(--bg-card-hover);
             box-shadow: var(--shadow-glow);
@@ -1030,48 +1047,18 @@
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 2px;
+            line-height: 1.2;
         }
 
         .skill-card .skill-desc {
             font-size: 11px;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.3;
             margin-top: 2px;
         }
 
-        /* ===== CAROUSEL DOTS ===== */
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 14px;
-            flex-wrap: wrap;
-        }
-
-        .carousel-dots .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border-color);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            padding: 0;
-        }
-
-        .carousel-dots .dot.active {
-            background: var(--gradient-start);
-            box-shadow: 0 0 12px rgba(0, 188, 212, 0.4);
-            transform: scale(1.2);
-        }
-
-        .carousel-dots .dot:hover {
-            background: var(--gradient-start);
-            opacity: 0.7;
-        }
-
         /* ============================================================
-           SOFT SKILLS (SAMA)
+           SOFT SKILLS
            ============================================================ */
         .soft-skills {
             display: flex;
@@ -1094,7 +1081,7 @@
         .soft-skills span:hover { border-color: var(--gradient-start); color: var(--text-primary); transform: scale(1.05); box-shadow: var(--shadow-glow); }
 
         /* ============================================================
-           PROJECTS PAGE (SAMA)
+           PROJECTS PAGE
            ============================================================ */
         .project-tabs {
             display: flex;
@@ -1255,7 +1242,7 @@
         .sub-content.active-sub-content { display: block; }
 
         /* ============================================================
-           CERTIFICATES (SAMA)
+           CERTIFICATES
            ============================================================ */
         .cert-grid {
             display: grid;
@@ -1340,6 +1327,10 @@
             .project-grid-home { grid-template-columns: repeat(2, 1fr); }
             .project-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
             .about-grid { grid-template-columns: 1fr 1fr; }
+            :root {
+                --skill-card-width: 160px;
+                --skill-gap: 14px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1386,7 +1377,17 @@
             .floating-icons { display: none; }
             .sub-tabs { justify-content: center; }
             .sub-tab { font-size: 11px; padding: 4px 12px; min-height: 30px; }
-            .skill-card { min-width: 140px; max-width: 160px; padding: 14px 12px; }
+            :root {
+                --skill-card-width: 140px;
+                --skill-gap: 12px;
+            }
+            .skill-card {
+                padding: 14px 12px;
+                min-height: 120px;
+            }
+            .skill-card .skill-icon { font-size: 24px; }
+            .skill-card h5 { font-size: 13px; }
+            .skill-card .skill-desc { font-size: 10px; }
         }
 
         @media (max-width: 420px) {
@@ -1400,10 +1401,17 @@
             .mobile-sidebar { width: 60%; max-width: 280px; }
             .project-tabs { justify-content: center; }
             .project-tab { font-size: 12px; padding: 6px 14px; min-height: 34px; }
-            .skill-card { min-width: 120px; max-width: 140px; padding: 12px 10px; }
-            .skill-card .skill-icon { font-size: 22px; }
+            :root {
+                --skill-card-width: 120px;
+                --skill-gap: 10px;
+            }
+            .skill-card {
+                padding: 12px 10px;
+                min-height: 100px;
+            }
+            .skill-card .skill-icon { font-size: 20px; }
             .skill-card h5 { font-size: 12px; }
-            .skill-card .skill-desc { font-size: 10px; }
+            .skill-card .skill-desc { font-size: 9px; }
         }
 
         /* ============================================================
@@ -1418,8 +1426,7 @@
         .mobile-theme-btn,
         .sidebar-close,
         .navbar .theme-toggle-btn,
-        .contact-item,
-        .carousel-dots .dot {
+        .contact-item {
             touch-action: manipulation;
         }
 
@@ -1456,8 +1463,8 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
-            .skill-carousel-track {
-                transition: none !important;
+            .skill-loop-track {
+                animation: none !important;
             }
         }
     </style>
@@ -1681,10 +1688,13 @@
             setTimeout(() => {
                 document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
             }, 300);
+            
+            // Init infinite loop carousel after render
+            setTimeout(initInfiniteCarousel, 100);
         }
 
         // ============================================================
-        // FUNGSI GET SKILL ICON
+        // FUNGSI GET SKILL ICON & DESCRIPTION
         // ============================================================
         function getSkillIcon(name) {
             const icons = {
@@ -1701,9 +1711,6 @@
             return icons[name] || 'fa-circle';
         }
 
-        // ============================================================
-        // FUNGSI GET SKILL DESCRIPTION
-        // ============================================================
         function getSkillDesc(name) {
             const descs = {
                 'Router & Switch': 'Konfigurasi perangkat jaringan Cisco',
@@ -1720,7 +1727,7 @@
         }
 
         // ============================================================
-        // RENDER HOME (SAMA)
+        // RENDER HOME
         // ============================================================
         function renderHome() {
             const h = data.home;
@@ -1870,7 +1877,7 @@
         }
 
         // ============================================================
-        // RENDER ABOUT (HARD SKILL CAROUSEL + SOFT SKILL)
+        // RENDER ABOUT (HARD SKILL INFINITE LOOP + SOFT SKILL)
         // ============================================================
         function renderAbout() {
             const a = data.about;
@@ -1879,6 +1886,9 @@
             const hardSkills = (a.hardSkills || []).filter(s => 
                 !s.name.toLowerCase().includes('linux')
             );
+
+            // Duplikat array untuk infinite loop (2x lipat)
+            const duplicatedSkills = [...hardSkills, ...hardSkills];
 
             document.getElementById('page-about').innerHTML = `
                 <div class="section">
@@ -1897,9 +1907,9 @@
                         <div class="skills-section reveal">
                             <div>
                                 <h4><i class="fas fa-tools"></i> Hard Skill</h4>
-                                <div class="skill-carousel-wrapper" id="skillCarouselWrapper">
-                                    <div class="skill-carousel-track" id="skillCarouselTrack">
-                                        ${hardSkills.map(s => `
+                                <div class="skill-loop-wrapper" id="skillLoopWrapper">
+                                    <div class="skill-loop-track" id="skillLoopTrack">
+                                        ${duplicatedSkills.map(s => `
                                             <div class="skill-card">
                                                 <span class="skill-icon"><i class="fas ${getSkillIcon(s.name)}"></i></span>
                                                 <h5>${s.name}</h5>
@@ -1908,7 +1918,6 @@
                                         `).join('')}
                                     </div>
                                 </div>
-                                <div class="carousel-dots" id="skillDots"></div>
                             </div>
                             <div>
                                 <h4><i class="fas fa-brain"></i> Soft Skill</h4>
@@ -1921,193 +1930,73 @@
                 </div>
             `;
 
-            // ============================================================
-            // INIT CAROUSEL
-            // ============================================================
-            const track = document.getElementById('skillCarouselTrack');
-            const dotsContainer = document.getElementById('skillDots');
-            const cards = track ? track.querySelectorAll('.skill-card') : [];
-            const cardCount = cards.length;
-            
-            if (cardCount > 0) {
-                let currentIndex = 0;
-                let autoSlideInterval = null;
-                let isTransitioning = false;
-
-                // Hitung card per view
-                function getCardsPerView() {
-                    if (window.innerWidth <= 420) return 2;
-                    if (window.innerWidth <= 768) return 2;
-                    if (window.innerWidth <= 992) return 3;
-                    return 4;
-                }
-
-                function getCardWidth() {
-                    const wrapper = document.getElementById('skillCarouselWrapper');
-                    if (!wrapper) return 200;
-                    const wrapperWidth = wrapper.offsetWidth;
-                    const cardsPerView = getCardsPerView();
-                    const gap = 16;
-                    return (wrapperWidth - (gap * (cardsPerView - 1))) / cardsPerView;
-                }
-
-                function updateCarousel(animate = true) {
-                    if (!track || isTransitioning) return;
-                    
-                    const cardsPerView = getCardsPerView();
-                    const cardWidth = getCardWidth();
-                    const gap = 16;
-                    const maxIndex = Math.max(0, cardCount - cardsPerView);
-                    
-                    // Clamp index
-                    if (currentIndex > maxIndex) currentIndex = maxIndex;
-                    if (currentIndex < 0) currentIndex = 0;
-                    
-                    const offset = currentIndex * (cardWidth + gap);
-                    
-                    track.style.transition = animate ? 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
-                    track.style.transform = `translateX(-${offset}px)`;
-                    
-                    // Update dots
-                    const dots = dotsContainer.querySelectorAll('.dot');
-                    dots.forEach((dot, idx) => {
-                        dot.classList.toggle('active', idx === currentIndex);
-                    });
-                    
-                    // Update counter label
-                    const totalDots = Math.ceil(cardCount / cardsPerView);
-                    const counter = document.getElementById('skillCounter');
-                    if (counter) {
-                        counter.textContent = `${currentIndex + 1} / ${totalDots}`;
-                    }
-                }
-
-                function createDots() {
-                    const cardsPerView = getCardsPerView();
-                    const totalDots = Math.ceil(cardCount / cardsPerView);
-                    
-                    dotsContainer.innerHTML = '';
-                    
-                    for (let i = 0; i < totalDots; i++) {
-                        const dot = document.createElement('button');
-                        dot.className = `dot ${i === 0 ? 'active' : ''}`;
-                        dot.setAttribute('aria-label', `Slide ke ${i + 1}`);
-                        dot.addEventListener('click', function() {
-                            if (isTransitioning) return;
-                            currentIndex = i;
-                            updateCarousel(true);
-                            resetAutoSlide();
-                        });
-                        dotsContainer.appendChild(dot);
-                    }
-                }
-
-                function resetAutoSlide() {
-                    if (autoSlideInterval) {
-                        clearInterval(autoSlideInterval);
-                    }
-                    autoSlideInterval = setInterval(() => {
-                        if (isTransitioning) return;
-                        const cardsPerView = getCardsPerView();
-                        const maxIndex = Math.max(0, cardCount - cardsPerView);
-                        if (currentIndex >= maxIndex) {
-                            currentIndex = 0;
-                        } else {
-                            currentIndex++;
-                        }
-                        updateCarousel(true);
-                    }, 3000);
-                }
-
-                function handleResize() {
-                    const cardsPerView = getCardsPerView();
-                    const maxIndex = Math.max(0, cardCount - cardsPerView);
-                    if (currentIndex > maxIndex) currentIndex = maxIndex;
-                    
-                    // Rebuild dots
-                    createDots();
-                    updateCarousel(false);
-                }
-
-                // Inisialisasi
-                createDots();
-                
-                // Set card width
-                const cardsPerView = getCardsPerView();
-                const cardWidth = getCardWidth();
-                cards.forEach(card => {
-                    card.style.flex = `0 0 ${cardWidth}px`;
-                    card.style.minWidth = `${cardWidth}px`;
-                });
-                
-                updateCarousel(false);
-                resetAutoSlide();
-
-                // Event listeners
-                let resizeTimeout;
-                window.addEventListener('resize', function() {
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(() => {
-                        const newCardsPerView = getCardsPerView();
-                        const newCardWidth = getCardWidth();
-                        cards.forEach(card => {
-                            card.style.flex = `0 0 ${newCardWidth}px`;
-                            card.style.minWidth = `${newCardWidth}px`;
-                        });
-                        handleResize();
-                    }, 200);
-                });
-
-                // Pause on hover
-                const wrapper = document.getElementById('skillCarouselWrapper');
-                if (wrapper) {
-                    wrapper.addEventListener('mouseenter', function() {
-                        if (autoSlideInterval) {
-                            clearInterval(autoSlideInterval);
-                            autoSlideInterval = null;
-                        }
-                    });
-                    wrapper.addEventListener('mouseleave', function() {
-                        resetAutoSlide();
-                    });
-                }
-
-                // Touch support
-                let touchStartX = 0;
-                let touchEndX = 0;
-                if (track) {
-                    track.addEventListener('touchstart', function(e) {
-                        touchStartX = e.changedTouches[0].screenX;
-                    }, { passive: true });
-                    
-                    track.addEventListener('touchend', function(e) {
-                        touchEndX = e.changedTouches[0].screenX;
-                        const diff = touchStartX - touchEndX;
-                        if (Math.abs(diff) > 50) {
-                            const cardsPerView = getCardsPerView();
-                            if (diff > 0 && currentIndex < Math.max(0, cardCount - cardsPerView)) {
-                                currentIndex++;
-                            } else if (diff < 0 && currentIndex > 0) {
-                                currentIndex--;
-                            }
-                            updateCarousel(true);
-                            resetAutoSlide();
-                        }
-                    }, { passive: true });
-                }
-
-                // Simpan cleanup
-                window.__carouselCleanup = function() {
-                    if (autoSlideInterval) {
-                        clearInterval(autoSlideInterval);
-                        autoSlideInterval = null;
-                    }
-                };
-            }
+            // Init infinite loop after DOM update
+            setTimeout(initInfiniteCarousel, 50);
         }
 
         // ============================================================
-        // RENDER PROJECTS (SAMA)
+        // INFINITE LOOP CAROUSEL
+        // ============================================================
+        let carouselCleanup = null;
+
+        function initInfiniteCarousel() {
+            // Cleanup previous if exists
+            if (carouselCleanup) {
+                carouselCleanup();
+                carouselCleanup = null;
+            }
+
+            const track = document.getElementById('skillLoopTrack');
+            const wrapper = document.getElementById('skillLoopWrapper');
+            if (!track || !wrapper) return;
+
+            // Hitung durasi berdasarkan jumlah card
+            const cardCount = track.querySelectorAll('.skill-card').length;
+            const duration = Math.max(20, cardCount * 3);
+            track.style.setProperty('--scroll-duration', duration + 's');
+
+            // Hover pause
+            let isPaused = false;
+            
+            const pauseCarousel = () => {
+                if (!isPaused) {
+                    track.classList.add('paused');
+                    isPaused = true;
+                }
+            };
+
+            const resumeCarousel = () => {
+                if (isPaused) {
+                    track.classList.remove('paused');
+                    isPaused = false;
+                }
+            };
+
+            wrapper.addEventListener('mouseenter', pauseCarousel);
+            wrapper.addEventListener('mouseleave', resumeCarousel);
+            
+            // Touch support - pause on touch, resume after
+            let touchTimeout = null;
+            wrapper.addEventListener('touchstart', () => {
+                pauseCarousel();
+                clearTimeout(touchTimeout);
+            }, { passive: true });
+            
+            wrapper.addEventListener('touchend', () => {
+                touchTimeout = setTimeout(resumeCarousel, 3000);
+            }, { passive: true });
+
+            // Cleanup function
+            carouselCleanup = () => {
+                wrapper.removeEventListener('mouseenter', pauseCarousel);
+                wrapper.removeEventListener('mouseleave', resumeCarousel);
+                clearTimeout(touchTimeout);
+                track.classList.remove('paused');
+            };
+        }
+
+        // ============================================================
+        // RENDER PROJECTS
         // ============================================================
         function renderProjects() {
             const projects = data.projects || [];
@@ -2209,7 +2098,7 @@
         }
 
         // ============================================================
-        // RENDER CERTIFICATES (SAMA)
+        // RENDER CERTIFICATES
         // ============================================================
         function renderCertificates() {
             const certs = data.certificates || [];
@@ -2274,9 +2163,7 @@
             
             // Re-init carousel if switching to about
             if (pageId === 'about') {
-                setTimeout(() => {
-                    // Carousel sudah di-init di renderAbout
-                }, 300);
+                setTimeout(initInfiniteCarousel, 300);
             }
         }
 
@@ -2394,14 +2281,15 @@
         // INIT
         // ============================================================
         loadData();
-        console.log('🚀 Portfolio v4.0 — Hard Skill Carousel Auto-Slide!');
+        console.log('🚀 Portfolio v5.0 — Hard Skill Infinite Loop!');
         console.log('📝 Linux dihilangkan dari Hard Skill');
-        console.log('🔄 Hard Skill berbentuk carousel horizontal auto-slide');
+        console.log('🔄 Hard Skill berputar ke kiri terus-menerus (loop)');
 
         // Cleanup carousel on page unload
         window.addEventListener('beforeunload', function() {
-            if (window.__carouselCleanup) {
-                window.__carouselCleanup();
+            if (carouselCleanup) {
+                carouselCleanup();
+                carouselCleanup = null;
             }
         });
     </script>
