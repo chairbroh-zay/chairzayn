@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        /* ===== ROOT VARIABLES (Sama) ===== */
+        /* ============================================================
+           ROOT VARIABLES
+           ============================================================ */
         :root {
             --bg-primary: #000000;
             --bg-secondary: #0A0A0A;
@@ -35,8 +37,10 @@
             --max-width: 1100px;
             --navbar-height: 64px;
         }
-        
-        /* ===== LIGHT MODE ===== */
+
+        /* ============================================================
+           LIGHT MODE
+           ============================================================ */
         [data-theme="light"] {
             --bg-primary: #FFFFFF;
             --bg-secondary: #F5F5F5;
@@ -53,8 +57,10 @@
             --shadow-md: 0 8px 40px rgba(0, 0, 0, 0.06);
             --shadow-glow: 0 0 60px rgba(0, 188, 212, 0.12);
         }
-        
-        /* ===== RESET & BASE ===== */
+
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -69,8 +75,10 @@
             overflow-x: hidden;
         }
         ::selection { background: var(--gradient-start); color: var(--text-inverse); }
-        
-        /* ===== PARTICLE BACKGROUND ===== */
+
+        /* ============================================================
+           PARTICLE BACKGROUND
+           ============================================================ */
         #particles-canvas {
             position: fixed;
             top: 0;
@@ -81,8 +89,10 @@
             pointer-events: none;
             opacity: 0.5;
         }
-        
-        /* ===== GRADIENT ORB ===== */
+
+        /* ============================================================
+           GRADIENT ORB
+           ============================================================ */
         .gradient-orb {
             position: fixed;
             border-radius: 50%;
@@ -101,13 +111,17 @@
             66% { transform: translate(-20px, 30px) scale(0.9); }
             100% { transform: translate(10px, -10px) scale(1.05); }
         }
-        
-        /* ===== SCROLLBAR ===== */
+
+        /* ============================================================
+           SCROLLBAR
+           ============================================================ */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: var(--gradient-start); border-radius: 10px; }
-        
-        /* ===== LOADING ===== */
+
+        /* ============================================================
+           LOADING
+           ============================================================ */
         .loading {
             display: flex;
             justify-content: center;
@@ -120,8 +134,10 @@
         }
         .loading i { animation: spin 1s linear infinite; margin-right: 12px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* ===== NAVBAR ===== */
+
+        /* ============================================================
+           NAVBAR (SAMA SEPERTI SEBELUMNYA)
+           ============================================================ */
         .navbar {
             position: fixed;
             top: 0;
@@ -208,8 +224,10 @@
             transition: var(--transition);
         }
         .navbar .theme-toggle-btn:hover { border-color: var(--gradient-start); color: var(--text-primary); transform: rotate(30deg); }
-        
-        /* ===== MOBILE HEADER ===== */
+
+        /* ============================================================
+           MOBILE HEADER
+           ============================================================ */
         .mobile-header {
             display: none;
             position: fixed;
@@ -277,8 +295,10 @@
             transition: var(--transition);
         }
         .mobile-theme-btn:hover { border-color: var(--gradient-start); color: var(--text-primary); }
-        
-        /* ===== MOBILE SIDEBAR ===== */
+
+        /* ============================================================
+           MOBILE SIDEBAR
+           ============================================================ */
         .mobile-sidebar {
             position: fixed;
             top: 0;
@@ -422,8 +442,10 @@
             transform: translateX(18px);
             background: var(--text-inverse);
         }
-        
-        /* ===== SHOW/HIDE NAVBAR ===== */
+
+        /* ============================================================
+           SHOW/HIDE NAVBAR
+           ============================================================ */
         @media (min-width: 769px) {
             .mobile-header { display: none !important; }
             .mobile-sidebar { display: none !important; }
@@ -434,8 +456,10 @@
             .navbar { display: none !important; }
             .mobile-header { display: flex !important; }
         }
-        
-        /* ===== MAIN CONTENT ===== */
+
+        /* ============================================================
+           MAIN CONTENT
+           ============================================================ */
         .main-content {
             max-width: var(--max-width);
             margin: 0 auto;
@@ -445,15 +469,17 @@
             z-index: 1;
         }
         @media (max-width: 768px) { .main-content { padding: 16px 16px 40px; } }
-        
-        /* ===== PAGES ===== */
+
+        /* ============================================================
+           PAGES
+           ============================================================ */
         .page { display: none; animation: fadeUp 0.6s ease; }
         .page.active { display: block; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
+
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-        
+
         .section {
             padding: 40px 0;
             border-bottom: 1px solid var(--border-color);
@@ -481,7 +507,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .divider {
             display: flex;
             align-items: center;
@@ -491,8 +517,10 @@
         }
         .divider .line { flex: 1; height: 1px; background: var(--border-color); }
         .divider .icon { color: var(--gradient-start); font-size: 14px; }
-        
-        /* ===== HERO ===== */
+
+        /* ============================================================
+           HERO (SAMA)
+           ============================================================ */
         .hero {
             min-height: 60vh;
             display: flex;
@@ -510,7 +538,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .hero-photo {
             display: flex;
             justify-content: center;
@@ -572,8 +600,7 @@
             transition: transform 0.1s ease;
             transform: rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
         }
-        
-        /* ===== FLOATING ICONS ===== */
+
         .floating-icons {
             position: absolute;
             inset: 0;
@@ -599,7 +626,7 @@
             50% { transform: translate(-5px, 10px) rotate(-5deg) scale(0.9); }
             75% { transform: translate(15px, 5px) rotate(15deg) scale(1.05); }
         }
-        
+
         .hero-extra-photo {
             position: absolute;
             right: 0;
@@ -660,7 +687,7 @@
             z-index: 2;
         }
         @media (max-width: 768px) { .hero-extra-photo { display: none !important; } }
-        
+
         .hero-content {
             display: flex;
             flex-direction: column;
@@ -747,8 +774,10 @@
             background: #4CAF50;
             animation: pulse-dot 2s infinite;
         }
-        
-        /* ===== COUNTER ===== */
+
+        /* ============================================================
+           COUNTER
+           ============================================================ */
         .counter-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -774,8 +803,10 @@
             background-clip: text;
         }
         .counter-item .label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
-        
-        /* ===== PROJECT HOME ===== */
+
+        /* ============================================================
+           PROJECT HOME (SAMA)
+           ============================================================ */
         .project-grid-home {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -865,7 +896,7 @@
             z-index: -1;
         }
         .project-card-home:hover .glow-border { opacity: 0.3; }
-        
+
         .view-all-projects {
             display: inline-flex;
             align-items: center;
@@ -879,8 +910,10 @@
         }
         .view-all-projects:hover { color: var(--gradient-start); }
         .view-all-projects:hover i { transform: translateX(4px); }
-        
-        /* ===== CONTACT ===== */
+
+        /* ============================================================
+           CONTACT (SAMA)
+           ============================================================ */
         .contact-section {
             padding: 30px 0 10px;
             border-top: 1px solid var(--border-color);
@@ -910,8 +943,10 @@
         }
         .contact-item:hover { border-color: var(--gradient-start); color: var(--text-primary); transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-glow); }
         .contact-item i { font-size: 16px; color: var(--gradient-start); }
-        
-        /* ===== ABOUT ===== */
+
+        /* ============================================================
+           ABOUT (Hard Skill jadi CAROUSEL)
+           ============================================================ */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -936,48 +971,108 @@
             animation: pulseMotto 3s ease-in-out infinite;
         }
         @keyframes pulseMotto { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
         .skills-section {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
         .skills-section h4 { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-        .skill-item { margin-bottom: 6px; }
-        .skill-item .skill-label {
+
+        /* ===== CAROUSEL HARD SKILL ===== */
+        .skill-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            border-radius: var(--radius-md);
+            padding: 4px 0;
+        }
+
+        .skill-carousel-track {
             display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            color: var(--text-secondary);
+            gap: 16px;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+            padding: 4px 0;
+        }
+
+        .skill-card {
+            min-width: 180px;
+            max-width: 200px;
+            flex: 0 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px 16px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-bounce);
+            cursor: default;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: var(--gradient-start);
+            background: var(--bg-card-hover);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .skill-card .skill-icon {
+            font-size: 28px;
+            color: var(--gradient-start);
+            margin-bottom: 6px;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .skill-card h5 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 2px;
         }
-        .skill-item .skill-label .skill-percent { color: var(--gradient-start); font-weight: 600; }
-        .skill-item .skill-bar {
-            width: 100%;
-            height: 4px;
-            background: var(--bg-card);
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
+
+        .skill-card .skill-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-top: 2px;
         }
-        .skill-item .skill-bar .skill-fill {
-            height: 100%;
-            border-radius: 10px;
-            background: var(--gradient-bg);
-            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 0%;
-            position: relative;
+
+        /* ===== CAROUSEL DOTS ===== */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
         }
-        .skill-item .skill-bar .skill-fill::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 20px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
-            border-radius: 10px;
+
+        .carousel-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0;
         }
-        .skill-item .skill-bar .skill-fill.animated { width: var(--percent); }
+
+        .carousel-dots .dot.active {
+            background: var(--gradient-start);
+            box-shadow: 0 0 12px rgba(0, 188, 212, 0.4);
+            transform: scale(1.2);
+        }
+
+        .carousel-dots .dot:hover {
+            background: var(--gradient-start);
+            opacity: 0.7;
+        }
+
+        /* ============================================================
+           SOFT SKILLS (SAMA)
+           ============================================================ */
         .soft-skills {
             display: flex;
             flex-wrap: wrap;
@@ -997,8 +1092,10 @@
             gap: 6px;
         }
         .soft-skills span:hover { border-color: var(--gradient-start); color: var(--text-primary); transform: scale(1.05); box-shadow: var(--shadow-glow); }
-        
-        /* ===== PROJECTS PAGE ===== */
+
+        /* ============================================================
+           PROJECTS PAGE (SAMA)
+           ============================================================ */
         .project-tabs {
             display: flex;
             gap: 6px;
@@ -1028,7 +1125,7 @@
             border-color: transparent;
             box-shadow: 0 4px 20px rgba(0, 188, 212, 0.3);
         }
-        
+
         .sub-tabs {
             display: flex;
             gap: 6px;
@@ -1057,7 +1154,7 @@
             color: var(--text-inverse);
             border-color: transparent;
         }
-        
+
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -1156,8 +1253,10 @@
         .project-subpage.active-sub { display: block; }
         .sub-content { display: none; animation: fadeUp 0.4s ease; }
         .sub-content.active-sub-content { display: block; }
-        
-        /* ===== CERTIFICATES ===== */
+
+        /* ============================================================
+           CERTIFICATES (SAMA)
+           ============================================================ */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1215,7 +1314,7 @@
             color: var(--text-inverse);
             letter-spacing: 0.3px;
         }
-        
+
         .coming-soon {
             text-align: center;
             padding: 40px 20px;
@@ -1227,8 +1326,10 @@
         .coming-soon .coming-icon { font-size: 48px; color: var(--gradient-start); margin-bottom: 12px; opacity: 0.5; }
         .coming-soon h3 { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
         .coming-soon p { color: var(--text-muted); font-size: 14px; }
-        
-        /* ===== RESPONSIVE ===== */
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
         @media (max-width: 992px) {
             .hero .container {
                 grid-template-columns: 1fr 1.4fr 0.8fr;
@@ -1238,8 +1339,9 @@
             .hero-extra-photo { width: 45%; height: 55vh; max-height: 400px; }
             .project-grid-home { grid-template-columns: repeat(2, 1fr); }
             .project-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+            .about-grid { grid-template-columns: 1fr 1fr; }
         }
-        
+
         @media (max-width: 768px) {
             .main-content { padding: 16px 16px 40px; }
             .hero {
@@ -1284,8 +1386,9 @@
             .floating-icons { display: none; }
             .sub-tabs { justify-content: center; }
             .sub-tab { font-size: 11px; padding: 4px 12px; min-height: 30px; }
+            .skill-card { min-width: 140px; max-width: 160px; padding: 14px 12px; }
         }
-        
+
         @media (max-width: 420px) {
             .hero-photo .photo-wrapper { width: 120px; height: 120px; }
             .hero h1 { font-size: 24px; }
@@ -1297,9 +1400,15 @@
             .mobile-sidebar { width: 60%; max-width: 280px; }
             .project-tabs { justify-content: center; }
             .project-tab { font-size: 12px; padding: 6px 14px; min-height: 34px; }
+            .skill-card { min-width: 120px; max-width: 140px; padding: 12px 10px; }
+            .skill-card .skill-icon { font-size: 22px; }
+            .skill-card h5 { font-size: 12px; }
+            .skill-card .skill-desc { font-size: 10px; }
         }
-        
-        /* ===== TOUCH TARGETS ===== */
+
+        /* ============================================================
+           TOUCH TARGETS
+           ============================================================ */
         .btn,
         .project-tab,
         .sub-tab,
@@ -1309,11 +1418,14 @@
         .mobile-theme-btn,
         .sidebar-close,
         .navbar .theme-toggle-btn,
-        .contact-item {
+        .contact-item,
+        .carousel-dots .dot {
             touch-action: manipulation;
         }
-        
-        /* ===== REDUCED MOTION ===== */
+
+        /* ============================================================
+           REDUCED MOTION
+           ============================================================ */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -1343,6 +1455,9 @@
             .reveal {
                 opacity: 1 !important;
                 transform: none !important;
+            }
+            .skill-carousel-track {
+                transition: none !important;
             }
         }
     </style>
@@ -1432,7 +1547,7 @@
 
     <script>
         // ============================================================
-        // PARTICLES (Sama)
+        // PARTICLES
         // ============================================================
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -1551,9 +1666,6 @@
             renderCertificates();
 
             setTimeout(() => {
-                document.querySelectorAll('.skill-fill').forEach(el => {
-                    el.style.width = el.style.getPropertyValue('--percent');
-                });
                 document.querySelectorAll('.counter-item .number').forEach(c => {
                     const target = parseInt(c.dataset.count);
                     if (!target) return;
@@ -1572,27 +1684,43 @@
         }
 
         // ============================================================
-        // FUNGSI GET SKILL ICON (VARIATIF)
+        // FUNGSI GET SKILL ICON
         // ============================================================
         function getSkillIcon(name) {
             const icons = {
-                'Router & Switch': '<i class="fas fa-route"></i>',
-                'WLAN': '<i class="fas fa-signal"></i>',
-                'WLAN (Jaringan Lokal)': '<i class="fas fa-signal"></i>',
-                'Microsoft Excel': '<i class="fas fa-table"></i>',
-                'Microsoft Word': '<i class="fas fa-pen-fancy"></i>',
-                'Microsoft PowerPoint': '<i class="fas fa-chart-simple"></i>',
-                'Visio': '<i class="fas fa-diagram-project"></i>',
-                'HTML': '<i class="fas fa-code"></i>',
-                'Linux': '<i class="fas fa-terminal"></i>',
-                'Linux (Dasar)': '<i class="fas fa-terminal"></i>',
-                'Python': '<i class="fas fa-robot"></i>'
+                'Router & Switch': 'fa-route',
+                'WLAN': 'fa-wifi',
+                'WLAN (Jaringan Lokal)': 'fa-wifi',
+                'Microsoft Excel': 'fa-table',
+                'Microsoft Word': 'fa-pen-fancy',
+                'Microsoft PowerPoint': 'fa-chart-simple',
+                'Visio': 'fa-diagram-project',
+                'HTML': 'fa-code',
+                'Python': 'fa-robot'
             };
-            return icons[name] || '<i class="fas fa-circle"></i>';
+            return icons[name] || 'fa-circle';
         }
 
         // ============================================================
-        // RENDER HOME (IKON VARIATIF)
+        // FUNGSI GET SKILL DESCRIPTION
+        // ============================================================
+        function getSkillDesc(name) {
+            const descs = {
+                'Router & Switch': 'Konfigurasi perangkat jaringan Cisco',
+                'WLAN': 'Perancangan jaringan nirkabel',
+                'WLAN (Jaringan Lokal)': 'Perancangan jaringan nirkabel',
+                'Microsoft Excel': 'Pengolahan data & pivot table',
+                'Microsoft Word': 'Dokumen profesional & mail merge',
+                'Microsoft PowerPoint': 'Presentasi dengan animasi',
+                'Visio': 'Diagram jaringan & flowchart',
+                'HTML': 'Struktur dasar halaman web HTML5',
+                'Python': 'Pemrograman & otomatisasi'
+            };
+            return descs[name] || 'Skill';
+        }
+
+        // ============================================================
+        // RENDER HOME (SAMA)
         // ============================================================
         function renderHome() {
             const h = data.home;
@@ -1742,10 +1870,16 @@
         }
 
         // ============================================================
-        // RENDER ABOUT (IKON VARIATIF - HARD SKILL + SOFT SKILL)
+        // RENDER ABOUT (HARD SKILL CAROUSEL + SOFT SKILL)
         // ============================================================
         function renderAbout() {
             const a = data.about;
+            
+            // Filter hard skills - HAPUS LINUX
+            const hardSkills = (a.hardSkills || []).filter(s => 
+                !s.name.toLowerCase().includes('linux')
+            );
+
             document.getElementById('page-about').innerHTML = `
                 <div class="section">
                     <span class="section-label">Tentang Saya</span>
@@ -1763,17 +1897,18 @@
                         <div class="skills-section reveal">
                             <div>
                                 <h4><i class="fas fa-tools"></i> Hard Skill</h4>
-                                ${(a.hardSkills || []).map(s => `
-                                    <div class="skill-item">
-                                        <div class="skill-label">
-                                            <span>${getSkillIcon(s.name)} ${s.name}</span>
-                                            <span class="skill-percent">${s.percent}%</span>
-                                        </div>
-                                        <div class="skill-bar">
-                                            <div class="skill-fill" style="--percent: ${s.percent}%;"></div>
-                                        </div>
+                                <div class="skill-carousel-wrapper" id="skillCarouselWrapper">
+                                    <div class="skill-carousel-track" id="skillCarouselTrack">
+                                        ${hardSkills.map(s => `
+                                            <div class="skill-card">
+                                                <span class="skill-icon"><i class="fas ${getSkillIcon(s.name)}"></i></span>
+                                                <h5>${s.name}</h5>
+                                                <p class="skill-desc">${getSkillDesc(s.name)}</p>
+                                            </div>
+                                        `).join('')}
                                     </div>
-                                `).join('')}
+                                </div>
+                                <div class="carousel-dots" id="skillDots"></div>
                             </div>
                             <div>
                                 <h4><i class="fas fa-brain"></i> Soft Skill</h4>
@@ -1785,10 +1920,194 @@
                     </div>
                 </div>
             `;
+
+            // ============================================================
+            // INIT CAROUSEL
+            // ============================================================
+            const track = document.getElementById('skillCarouselTrack');
+            const dotsContainer = document.getElementById('skillDots');
+            const cards = track ? track.querySelectorAll('.skill-card') : [];
+            const cardCount = cards.length;
+            
+            if (cardCount > 0) {
+                let currentIndex = 0;
+                let autoSlideInterval = null;
+                let isTransitioning = false;
+
+                // Hitung card per view
+                function getCardsPerView() {
+                    if (window.innerWidth <= 420) return 2;
+                    if (window.innerWidth <= 768) return 2;
+                    if (window.innerWidth <= 992) return 3;
+                    return 4;
+                }
+
+                function getCardWidth() {
+                    const wrapper = document.getElementById('skillCarouselWrapper');
+                    if (!wrapper) return 200;
+                    const wrapperWidth = wrapper.offsetWidth;
+                    const cardsPerView = getCardsPerView();
+                    const gap = 16;
+                    return (wrapperWidth - (gap * (cardsPerView - 1))) / cardsPerView;
+                }
+
+                function updateCarousel(animate = true) {
+                    if (!track || isTransitioning) return;
+                    
+                    const cardsPerView = getCardsPerView();
+                    const cardWidth = getCardWidth();
+                    const gap = 16;
+                    const maxIndex = Math.max(0, cardCount - cardsPerView);
+                    
+                    // Clamp index
+                    if (currentIndex > maxIndex) currentIndex = maxIndex;
+                    if (currentIndex < 0) currentIndex = 0;
+                    
+                    const offset = currentIndex * (cardWidth + gap);
+                    
+                    track.style.transition = animate ? 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+                    track.style.transform = `translateX(-${offset}px)`;
+                    
+                    // Update dots
+                    const dots = dotsContainer.querySelectorAll('.dot');
+                    dots.forEach((dot, idx) => {
+                        dot.classList.toggle('active', idx === currentIndex);
+                    });
+                    
+                    // Update counter label
+                    const totalDots = Math.ceil(cardCount / cardsPerView);
+                    const counter = document.getElementById('skillCounter');
+                    if (counter) {
+                        counter.textContent = `${currentIndex + 1} / ${totalDots}`;
+                    }
+                }
+
+                function createDots() {
+                    const cardsPerView = getCardsPerView();
+                    const totalDots = Math.ceil(cardCount / cardsPerView);
+                    
+                    dotsContainer.innerHTML = '';
+                    
+                    for (let i = 0; i < totalDots; i++) {
+                        const dot = document.createElement('button');
+                        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                        dot.setAttribute('aria-label', `Slide ke ${i + 1}`);
+                        dot.addEventListener('click', function() {
+                            if (isTransitioning) return;
+                            currentIndex = i;
+                            updateCarousel(true);
+                            resetAutoSlide();
+                        });
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+
+                function resetAutoSlide() {
+                    if (autoSlideInterval) {
+                        clearInterval(autoSlideInterval);
+                    }
+                    autoSlideInterval = setInterval(() => {
+                        if (isTransitioning) return;
+                        const cardsPerView = getCardsPerView();
+                        const maxIndex = Math.max(0, cardCount - cardsPerView);
+                        if (currentIndex >= maxIndex) {
+                            currentIndex = 0;
+                        } else {
+                            currentIndex++;
+                        }
+                        updateCarousel(true);
+                    }, 3000);
+                }
+
+                function handleResize() {
+                    const cardsPerView = getCardsPerView();
+                    const maxIndex = Math.max(0, cardCount - cardsPerView);
+                    if (currentIndex > maxIndex) currentIndex = maxIndex;
+                    
+                    // Rebuild dots
+                    createDots();
+                    updateCarousel(false);
+                }
+
+                // Inisialisasi
+                createDots();
+                
+                // Set card width
+                const cardsPerView = getCardsPerView();
+                const cardWidth = getCardWidth();
+                cards.forEach(card => {
+                    card.style.flex = `0 0 ${cardWidth}px`;
+                    card.style.minWidth = `${cardWidth}px`;
+                });
+                
+                updateCarousel(false);
+                resetAutoSlide();
+
+                // Event listeners
+                let resizeTimeout;
+                window.addEventListener('resize', function() {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        const newCardsPerView = getCardsPerView();
+                        const newCardWidth = getCardWidth();
+                        cards.forEach(card => {
+                            card.style.flex = `0 0 ${newCardWidth}px`;
+                            card.style.minWidth = `${newCardWidth}px`;
+                        });
+                        handleResize();
+                    }, 200);
+                });
+
+                // Pause on hover
+                const wrapper = document.getElementById('skillCarouselWrapper');
+                if (wrapper) {
+                    wrapper.addEventListener('mouseenter', function() {
+                        if (autoSlideInterval) {
+                            clearInterval(autoSlideInterval);
+                            autoSlideInterval = null;
+                        }
+                    });
+                    wrapper.addEventListener('mouseleave', function() {
+                        resetAutoSlide();
+                    });
+                }
+
+                // Touch support
+                let touchStartX = 0;
+                let touchEndX = 0;
+                if (track) {
+                    track.addEventListener('touchstart', function(e) {
+                        touchStartX = e.changedTouches[0].screenX;
+                    }, { passive: true });
+                    
+                    track.addEventListener('touchend', function(e) {
+                        touchEndX = e.changedTouches[0].screenX;
+                        const diff = touchStartX - touchEndX;
+                        if (Math.abs(diff) > 50) {
+                            const cardsPerView = getCardsPerView();
+                            if (diff > 0 && currentIndex < Math.max(0, cardCount - cardsPerView)) {
+                                currentIndex++;
+                            } else if (diff < 0 && currentIndex > 0) {
+                                currentIndex--;
+                            }
+                            updateCarousel(true);
+                            resetAutoSlide();
+                        }
+                    }, { passive: true });
+                }
+
+                // Simpan cleanup
+                window.__carouselCleanup = function() {
+                    if (autoSlideInterval) {
+                        clearInterval(autoSlideInterval);
+                        autoSlideInterval = null;
+                    }
+                };
+            }
         }
 
         // ============================================================
-        // RENDER PROJECTS (IKON VARIATIF - TKJ & SIJA)
+        // RENDER PROJECTS (SAMA)
         // ============================================================
         function renderProjects() {
             const projects = data.projects || [];
@@ -1890,7 +2209,7 @@
         }
 
         // ============================================================
-        // RENDER CERTIFICATES
+        // RENDER CERTIFICATES (SAMA)
         // ============================================================
         function renderCertificates() {
             const certs = data.certificates || [];
@@ -1952,6 +2271,13 @@
             });
             closeSidebar();
             if (pageId) history.pushState(null, '', '#' + pageId);
+            
+            // Re-init carousel if switching to about
+            if (pageId === 'about') {
+                setTimeout(() => {
+                    // Carousel sudah di-init di renderAbout
+                }, 300);
+            }
         }
 
         desktopLinks.forEach(link => {
@@ -2068,8 +2394,16 @@
         // INIT
         // ============================================================
         loadData();
-        console.log('🚀 Portfolio v3.0 — Ikon Variatif & Keren!');
-        console.log('📝 Edit data.json untuk mengubah konten');
+        console.log('🚀 Portfolio v4.0 — Hard Skill Carousel Auto-Slide!');
+        console.log('📝 Linux dihilangkan dari Hard Skill');
+        console.log('🔄 Hard Skill berbentuk carousel horizontal auto-slide');
+
+        // Cleanup carousel on page unload
+        window.addEventListener('beforeunload', function() {
+            if (window.__carouselCleanup) {
+                window.__carouselCleanup();
+            }
+        });
     </script>
 
 </body>
