@@ -38,6 +38,7 @@
             --navbar-height: 64px;
             --skill-card-width: 180px;
             --skill-gap: 16px;
+            --testimonial-card-width: 280px;
         }
 
         [data-theme="light"] {
@@ -537,7 +538,6 @@
             position: relative;
             z-index: 2;
         }
-
         .hero-photo {
             display: flex;
             justify-content: center;
@@ -911,6 +911,107 @@
         .view-all-projects:hover i { transform: translateX(4px); }
 
         /* ============================================================
+           TESTIMONIALS - INFINITE LOOP KE KANAN
+           ============================================================ */
+        .testimonial-loop-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            border-radius: var(--radius-md);
+            padding: 6px 0;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+
+        .testimonial-loop-track {
+            display: flex;
+            gap: 16px;
+            width: max-content;
+            animation: scrollRightTesti var(--scroll-duration, 40s) linear infinite;
+            will-change: transform;
+        }
+
+        .testimonial-loop-track.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollRightTesti {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .testimonial-card {
+            width: var(--testimonial-card-width);
+            flex: 0 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-bounce);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: var(--gradient-start);
+            background: var(--bg-card-hover);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .testimonial-card .testi-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-card .testi-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-inverse);
+            flex-shrink: 0;
+        }
+
+        .testimonial-card .testi-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .testimonial-card .testi-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .testimonial-card .testi-role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .testimonial-card .testi-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .testimonial-card .testi-quote {
+            font-size: 14px;
+            color: var(--gradient-start);
+            opacity: 0.5;
+        }
+
+        /* ============================================================
            CONTACT
            ============================================================ */
         .contact-section {
@@ -944,7 +1045,7 @@
         .contact-item i { font-size: 16px; color: var(--gradient-start); }
 
         /* ============================================================
-           ABOUT - ABOUT TEXT DI ATAS, SKILL DI BAWAH
+           ABOUT
            ============================================================ */
         .about-container {
             display: flex;
@@ -953,7 +1054,6 @@
             margin-top: 16px;
         }
 
-        /* About text full width */
         .about-text-full {
             width: 100%;
             display: flex;
@@ -979,7 +1079,6 @@
         }
         @keyframes pulseMotto { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
 
-        /* Skill section */
         .skills-section-full {
             display: flex;
             flex-direction: column;
@@ -1017,12 +1116,10 @@
             will-change: transform;
         }
 
-        /* Baris 1: bergerak ke KIRI */
         .skill-loop-track.track-left {
             animation: scrollLeft var(--scroll-duration, 30s) linear infinite;
         }
 
-        /* Baris 2: bergerak ke KANAN */
         .skill-loop-track.track-right {
             animation: scrollRight var(--scroll-duration, 30s) linear infinite;
         }
@@ -1110,6 +1207,196 @@
             gap: 6px;
         }
         .soft-skills span:hover { border-color: var(--gradient-start); color: var(--text-primary); transform: scale(1.05); box-shadow: var(--shadow-glow); }
+
+        /* ============================================================
+           BAHASA
+           ============================================================ */
+        .language-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .language-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-bounce);
+        }
+        .language-item:hover {
+            border-color: var(--gradient-start);
+            color: var(--text-primary);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+        .language-item .flag { font-size: 16px; }
+        .language-item .lang-name { font-weight: 600; color: var(--text-primary); }
+        .language-item .lang-level { font-size: 11px; color: var(--text-muted); }
+
+        /* ============================================================
+           HOBI
+           ============================================================ */
+        .hobby-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .hobby-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-bounce);
+        }
+        .hobby-item:hover {
+            border-color: var(--gradient-start);
+            color: var(--text-primary);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+        .hobby-item i { color: var(--gradient-start); font-size: 14px; }
+
+        /* ============================================================
+           PENGALAMAN & ORGANISASI
+           ============================================================ */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .experience-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+        .experience-card:hover {
+            border-color: var(--gradient-start);
+            background: var(--bg-card-hover);
+            box-shadow: var(--shadow-glow);
+            transform: translateY(-3px);
+        }
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-bg);
+        }
+        .experience-card .exp-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .experience-card .exp-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--gradient-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--text-inverse);
+            flex-shrink: 0;
+        }
+        .experience-card .exp-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+        .experience-card .exp-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 2px;
+        }
+        .experience-card .exp-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .experience-card .exp-section {
+            margin-top: 12px;
+        }
+        .experience-card .exp-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gradient-start);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .experience-card .exp-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .experience-card .exp-list li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.6;
+        }
+        .experience-card .exp-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gradient-start);
+            font-size: 12px;
+        }
+        .experience-card .exp-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .experience-card .exp-skills span {
+            padding: 3px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            background: var(--bg-primary);
+            transition: var(--transition);
+        }
+        .experience-card:hover .exp-skills span {
+            border-color: var(--gradient-start);
+            color: var(--text-primary);
+        }
+
+        /* ============================================================
+           TESTIMONI DI ABOUT (STATIS)
+           ============================================================ */
+        .testimonial-static-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
 
         /* ============================================================
            PROJECTS PAGE
@@ -1273,7 +1560,7 @@
         .sub-content.active-sub-content { display: block; }
 
         /* ============================================================
-           CERTIFICATES
+           CERTIFICATES - SUB TAB
            ============================================================ */
         .cert-grid {
             display: grid;
@@ -1346,6 +1633,148 @@
         .coming-soon p { color: var(--text-muted); font-size: 14px; }
 
         /* ============================================================
+           FOOTER
+           ============================================================ */
+        .site-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 24px 20px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .site-footer .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .site-footer .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .site-footer .footer-brand .brand-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .site-footer .footer-brand .footer-photo {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            border: 2px solid var(--gradient-start);
+            box-shadow: 0 0 20px rgba(0, 188, 212, 0.2);
+            flex-shrink: 0;
+        }
+
+        .site-footer .footer-brand .brand-text h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .site-footer .footer-brand .brand-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .site-footer .footer-brand .brand-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .site-footer .footer-brand .brand-motto {
+            font-size: 13px;
+            font-weight: 600;
+            background: var(--gradient-bg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .site-footer .footer-col h5 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        .site-footer .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .site-footer .footer-col ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .site-footer .footer-col ul li a:hover {
+            color: var(--gradient-start);
+            transform: translateX(4px);
+        }
+
+        .site-footer .footer-col ul li a i {
+            font-size: 12px;
+            color: var(--gradient-start);
+            opacity: 0.7;
+        }
+
+        .site-footer .footer-bottom {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .site-footer .footer-bottom .heart {
+            color: #e74c3c;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .site-footer .footer-deco {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-bg);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .site-footer .footer-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .site-footer {
+                padding: 30px 16px 16px;
+            }
+        }
+
+        /* ============================================================
            RESPONSIVE
            ============================================================ */
         @media (max-width: 992px) {
@@ -1360,6 +1789,7 @@
             :root {
                 --skill-card-width: 160px;
                 --skill-gap: 14px;
+                --testimonial-card-width: 260px;
             }
         }
 
@@ -1409,6 +1839,7 @@
             :root {
                 --skill-card-width: 140px;
                 --skill-gap: 12px;
+                --testimonial-card-width: 240px;
             }
             .skill-card {
                 padding: 14px 12px;
@@ -1418,6 +1849,7 @@
             .skill-card h5 { font-size: 13px; }
             .skill-card .skill-desc { font-size: 10px; }
             .about-text-full { padding: 18px; }
+            .testimonial-static-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 420px) {
@@ -1434,6 +1866,7 @@
             :root {
                 --skill-card-width: 120px;
                 --skill-gap: 10px;
+                --testimonial-card-width: 220px;
             }
             .skill-card {
                 padding: 12px 10px;
@@ -1494,7 +1927,8 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
-            .skill-loop-track {
+            .skill-loop-track,
+            .testimonial-loop-track {
                 animation: none !important;
             }
         }
@@ -1582,6 +2016,9 @@
         <!-- CERTIFICATES -->
         <section class="page" id="page-certificate"></section>
     </main>
+
+    <!-- ===== FOOTER (di-render dari JS) ===== -->
+    <footer class="site-footer" id="siteFooter"></footer>
 
     <script>
         // ============================================================
@@ -1694,14 +2131,16 @@
             if (!data) return;
 
             document.getElementById('projectBadge').textContent = data.projects?.length || 0;
-            document.getElementById('certBadge').textContent = data.certificates?.length || 0;
+            const totalCerts = (data.certificates?.academic?.length || 0) + (data.certificates?.nonAcademic?.length || 0);
+            document.getElementById('certBadge').textContent = totalCerts;
             document.getElementById('mobileProjectBadge').textContent = data.projects?.length || 0;
-            document.getElementById('mobileCertBadge').textContent = data.certificates?.length || 0;
+            document.getElementById('mobileCertBadge').textContent = totalCerts;
 
             renderHome();
             renderAbout();
             renderProjects();
             renderCertificates();
+            renderFooter();
 
             setTimeout(() => {
                 document.querySelectorAll('.counter-item .number').forEach(c => {
@@ -1720,7 +2159,7 @@
                 document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
             }, 300);
             
-            setTimeout(initInfiniteCarousel, 100);
+            setTimeout(initInfiniteCarousels, 100);
         }
 
         // ============================================================
@@ -1809,7 +2248,7 @@
                         <div class="label"><i class="fas fa-handshake"></i> Soft Skill</div>
                     </div>
                     <div class="counter-item">
-                        <div class="number" data-count="${data.certificates?.length || 0}">0</div>
+                        <div class="number" data-count="${totalCerts}">0</div>
                         <div class="label"><i class="fas fa-certificate"></i> Sertifikat</div>
                     </div>
                 </div>
@@ -1839,6 +2278,18 @@
                         `).join('') || `<p style="color:var(--text-muted);text-align:center;padding:20px;">Belum ada project.</p>`}
                     </div>
                 </div>
+
+                <!-- TESTIMONI DI HOME (INFINITE LOOP KE KANAN) -->
+                <div class="section">
+                    <span class="section-label">Testimoni</span>
+                    <h2 class="section-title reveal">Apa Kata <span class="highlight">Mereka</span></h2>
+                    <div class="testimonial-loop-wrapper" id="testimonialWrapper">
+                        <div class="testimonial-loop-track" id="testimonialTrack">
+                            ${renderTestimonialCards(data.testimonials)}
+                        </div>
+                    </div>
+                </div>
+
                 <div class="contact-section">
                     <div style="text-align:center;margin-bottom:12px;">
                         <span class="section-label">Hubungi Saya</span>
@@ -1907,7 +2358,45 @@
         }
 
         // ============================================================
-        // RENDER ABOUT - ABOUT TEXT DI ATAS, HARD SKILL 2 BARIS
+        // RENDER TESTIMONIAL CARDS (dipakai di Home & About)
+        // ============================================================
+        function renderTestimonialCards(testimonials) {
+            if (!testimonials || testimonials.length === 0) return '';
+            const list = testimonials.length > 0 ? [...testimonials, ...testimonials] : [];
+            return list.map(t => `
+                <div class="testimonial-card">
+                    <div class="testi-header">
+                        <div class="testi-avatar">${t.initial || t.name.substring(0, 2).toUpperCase()}</div>
+                        <div class="testi-info">
+                            <span class="testi-name">${t.name}</span>
+                            <span class="testi-role">${t.role}</span>
+                        </div>
+                    </div>
+                    <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testi-text">${t.text}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderTestimonialStatic(testimonials) {
+            if (!testimonials || testimonials.length === 0) return '';
+            return testimonials.map(t => `
+                <div class="testimonial-card">
+                    <div class="testi-header">
+                        <div class="testi-avatar">${t.initial || t.name.substring(0, 2).toUpperCase()}</div>
+                        <div class="testi-info">
+                            <span class="testi-name">${t.name}</span>
+                            <span class="testi-role">${t.role}</span>
+                        </div>
+                    </div>
+                    <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testi-text">${t.text}</p>
+                </div>
+            `).join('');
+        }
+
+        // ============================================================
+        // RENDER ABOUT
         // ============================================================
         function renderAbout() {
             const a = data.about;
@@ -1917,12 +2406,10 @@
                 !s.name.toLowerCase().includes('linux')
             );
 
-            // Bagi jadi 2 kelompok
             const midPoint = Math.ceil(hardSkills.length / 2);
             const row1Skills = hardSkills.slice(0, midPoint);
             const row2Skills = hardSkills.slice(midPoint);
 
-            // Duplikat untuk infinite loop
             const row1Duplicated = [...row1Skills, ...row1Skills];
             const row2Duplicated = [...row2Skills, ...row2Skills];
 
@@ -1937,19 +2424,18 @@
                     </div>
 
                     <div class="about-container">
-                        <!-- ABOUT TEXT - FULL WIDTH DI ATAS -->
+                        <!-- ABOUT TEXT -->
                         <div class="about-text-full reveal">
                             <p>${a.bio || ''}</p>
                             <p class="motto">"${a.motto || ''}"</p>
                         </div>
 
-                        <!-- SKILL SECTION DI BAWAH -->
+                        <!-- HARD SKILL -->
                         <div class="skills-section-full reveal">
                             <div>
                                 <h4><i class="fas fa-tools"></i> Hard Skill</h4>
                                 <div class="hard-skill-container">
-                                    <!-- Baris 1: Bergerak ke KIRI -->
-                                    <div class="skill-loop-row" data-direction="left">
+                                    <div class="skill-loop-row">
                                         <div class="skill-loop-track track-left" id="skillTrackLeft">
                                             ${row1Duplicated.map(s => `
                                                 <div class="skill-card">
@@ -1960,8 +2446,7 @@
                                             `).join('')}
                                         </div>
                                     </div>
-                                    <!-- Baris 2: Bergerak ke KANAN -->
-                                    <div class="skill-loop-row" data-direction="right">
+                                    <div class="skill-loop-row">
                                         <div class="skill-loop-track track-right" id="skillTrackRight">
                                             ${row2Duplicated.map(s => `
                                                 <div class="skill-card">
@@ -1974,10 +2459,93 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- SOFT SKILL -->
                             <div>
                                 <h4><i class="fas fa-brain"></i> Soft Skill</h4>
                                 <div class="soft-skills">
                                     ${(a.softSkills || []).map(s => `<span><i class="fas fa-bolt"></i> ${s}</span>`).join('')}
+                                </div>
+                            </div>
+
+                            <!-- BAHASA -->
+                            <div>
+                                <h4><i class="fas fa-globe"></i> Bahasa</h4>
+                                <div class="language-grid">
+                                    ${(a.languages || []).map(l => `
+                                        <div class="language-item">
+                                            <span class="flag">${l.flag || '🌐'}</span>
+                                            <span class="lang-name">${l.name}</span>
+                                            <span class="lang-level">(${l.level})</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <!-- HOBI -->
+                            <div>
+                                <h4><i class="fas fa-heart"></i> Hobi</h4>
+                                <div class="hobby-grid">
+                                    ${(a.hobbies || []).map(h => `
+                                        <div class="hobby-item">
+                                            <i class="fas ${h.icon}"></i>
+                                            <span>${h.name}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <!-- PENGALAMAN & ORGANISASI -->
+                            <div>
+                                <h4><i class="fas fa-briefcase"></i> Pengalaman & Organisasi</h4>
+                                <div class="experience-list">
+                                    ${(a.experiences || []).map(exp => `
+                                        <div class="experience-card">
+                                            <div class="exp-header">
+                                                <div class="exp-icon"><i class="fas ${exp.icon || 'fa-briefcase'}"></i></div>
+                                                <div>
+                                                    <div class="exp-title">${exp.title}</div>
+                                                    <div class="exp-meta">
+                                                        <span><i class="fas fa-user-tag"></i> ${exp.position}</span>
+                                                        <span><i class="fas fa-circle-info"></i> ${exp.status}${exp.year ? ' · ' + exp.year : ''}</span>
+                                                        <span><i class="fas fa-map-marker-alt"></i> ${exp.location || exp.organizer}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            ${exp.tasks ? `
+                                                <div class="exp-section">
+                                                    <div class="exp-section-title">Tugas & Tanggung Jawab</div>
+                                                    <ul class="exp-list">
+                                                        ${exp.tasks.map(t => `<li>${t}</li>`).join('')}
+                                                    </ul>
+                                                </div>
+                                            ` : ''}
+                                            ${exp.programs ? `
+                                                <div class="exp-section">
+                                                    <div class="exp-section-title">Program Kerja</div>
+                                                    <ul class="exp-list">
+                                                        ${exp.programs.map(p => `<li>${p}</li>`).join('')}
+                                                    </ul>
+                                                </div>
+                                            ` : ''}
+                                            ${exp.skills ? `
+                                                <div class="exp-section">
+                                                    <div class="exp-section-title">Skill yang Dikembangkan</div>
+                                                    <div class="exp-skills">
+                                                        ${exp.skills.map(s => `<span>${s}</span>`).join('')}
+                                                    </div>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <!-- TESTIMONI (STATIS) -->
+                            <div>
+                                <h4><i class="fas fa-comments"></i> Testimoni</h4>
+                                <div class="testimonial-static-grid">
+                                    ${renderTestimonialStatic(data.testimonials)}
                                 </div>
                             </div>
                         </div>
@@ -1985,87 +2553,72 @@
                 </div>
             `;
 
-            // Init infinite loop
-            setTimeout(initInfiniteCarousel, 50);
+            setTimeout(initInfiniteCarousels, 50);
         }
 
         // ============================================================
-        // INFINITE LOOP CAROUSEL - 2 BARIS (KIRI & KANAN)
+        // INFINITE LOOP CAROUSEL (SKILL & TESTIMONI)
         // ============================================================
         let carouselCleanup = null;
 
-        function initInfiniteCarousel() {
-            // Cleanup previous
+        function initInfiniteCarousels() {
             if (carouselCleanup) {
                 carouselCleanup();
                 carouselCleanup = null;
             }
 
-            const trackLeft = document.getElementById('skillTrackLeft');
-            const trackRight = document.getElementById('skillTrackRight');
-            const rows = document.querySelectorAll('.skill-loop-row');
-
-            if (!trackLeft || !trackRight) return;
-
-            // Hitung durasi berdasarkan jumlah card
-            const leftCards = trackLeft.querySelectorAll('.skill-card').length;
-            const rightCards = trackRight.querySelectorAll('.skill-card').length;
-            
-            const leftDuration = Math.max(20, leftCards * 2.5);
-            const rightDuration = Math.max(20, rightCards * 2.5);
-            
-            trackLeft.style.setProperty('--scroll-duration', leftDuration + 's');
-            trackRight.style.setProperty('--scroll-duration', rightDuration + 's');
-
-            // Hover pause untuk kedua track
             const cleanupFunctions = [];
 
-            rows.forEach(row => {
+            // Skill tracks
+            const trackLeft = document.getElementById('skillTrackLeft');
+            const trackRight = document.getElementById('skillTrackRight');
+            const skillRows = document.querySelectorAll('.skill-loop-row');
+
+            if (trackLeft) {
+                const leftCards = trackLeft.querySelectorAll('.skill-card').length;
+                trackLeft.style.setProperty('--scroll-duration', Math.max(20, leftCards * 2.5) + 's');
+            }
+            if (trackRight) {
+                const rightCards = trackRight.querySelectorAll('.skill-card').length;
+                trackRight.style.setProperty('--scroll-duration', Math.max(20, rightCards * 2.5) + 's');
+            }
+
+            skillRows.forEach(row => {
                 const track = row.querySelector('.skill-loop-track');
                 if (!track) return;
-
                 let isPaused = false;
-
-                const pauseCarousel = () => {
-                    if (!isPaused) {
-                        track.classList.add('paused');
-                        isPaused = true;
-                    }
-                };
-
-                const resumeCarousel = () => {
-                    if (isPaused) {
-                        track.classList.remove('paused');
-                        isPaused = false;
-                    }
-                };
-
-                row.addEventListener('mouseenter', pauseCarousel);
-                row.addEventListener('mouseleave', resumeCarousel);
-
-                // Touch support
-                let touchTimeout = null;
-                row.addEventListener('touchstart', () => {
-                    pauseCarousel();
-                    clearTimeout(touchTimeout);
-                }, { passive: true });
-                
-                row.addEventListener('touchend', () => {
-                    touchTimeout = setTimeout(resumeCarousel, 3000);
-                }, { passive: true });
-
+                const pause = () => { if (!isPaused) { track.classList.add('paused'); isPaused = true; } };
+                const resume = () => { if (isPaused) { track.classList.remove('paused'); isPaused = false; } };
+                row.addEventListener('mouseenter', pause);
+                row.addEventListener('mouseleave', resume);
                 cleanupFunctions.push(() => {
-                    row.removeEventListener('mouseenter', pauseCarousel);
-                    row.removeEventListener('mouseleave', resumeCarousel);
-                    clearTimeout(touchTimeout);
+                    row.removeEventListener('mouseenter', pause);
+                    row.removeEventListener('mouseleave', resume);
                     track.classList.remove('paused');
                 });
             });
 
-            // Cleanup function
-            carouselCleanup = () => {
-                cleanupFunctions.forEach(fn => fn());
-            };
+            // Testimonial track
+            const testiTrack = document.getElementById('testimonialTrack');
+            const testiWrapper = document.getElementById('testimonialWrapper');
+
+            if (testiTrack && testiWrapper) {
+                const testiCards = testiTrack.querySelectorAll('.testimonial-card').length;
+                testiTrack.style.setProperty('--scroll-duration', Math.max(30, testiCards * 3) + 's');
+
+                let isPaused = false;
+                const pause = () => { if (!isPaused) { testiTrack.classList.add('paused'); isPaused = true; } };
+                const resume = () => { if (isPaused) { testiTrack.classList.remove('paused'); isPaused = false; } };
+                testiWrapper.addEventListener('mouseenter', pause);
+                testiWrapper.addEventListener('mouseleave', resume);
+                cleanupFunctions.push(() => {
+                    testiWrapper.removeEventListener('mouseenter', pause);
+                    testiWrapper.removeEventListener('mouseleave', resume);
+                    testiTrack.classList.remove('paused');
+                });
+            }
+
+            carouselCleanup = () => { cleanupFunctions.forEach(fn => fn()); };
         }
 
         // ============================================================
@@ -2171,10 +2724,11 @@
         }
 
         // ============================================================
-        // RENDER CERTIFICATES
+        // RENDER CERTIFICATES (DENGAN SUB-TAB)
         // ============================================================
         function renderCertificates() {
-            const certs = data.certificates || [];
+            const certs = data.certificates || { academic: [], nonAcademic: [] };
+            
             document.getElementById('page-certificate').innerHTML = `
                 <div class="section">
                     <span class="section-label">Sertifikasi</span>
@@ -2184,30 +2738,112 @@
                         <span class="icon"><i class="fas fa-award"></i></span>
                         <span class="line"></span>
                     </div>
-                    <div class="cert-grid">
-                        ${certs.map(c => `
-                            <div class="cert-card reveal">
-                                <div class="cert-card-inner">
-                                    <div class="cert-card-front">
-                                        <span class="cert-icon"><i class="fas ${c.icon || 'fa-certificate'}"></i></span>
-                                        <h4>${c.name}</h4>
-                                        <p>${c.level || ''} · ${c.desc || ''}</p>
-                                        <span class="cert-badge"><i class="fas fa-check"></i> Tersertifikasi</span>
-                                    </div>
-                                    <div class="cert-card-back">
-                                        <span class="back-icon"><i class="fas fa-trophy"></i></span>
-                                        <p>${c.name} - ${c.level || 'Kompeten'}</p>
-                                    </div>
+                    
+                    <div class="sub-tabs reveal" style="margin-bottom:24px;">
+                        <button class="sub-tab active-sub" data-cert="academic">
+                            <i class="fas fa-graduation-cap"></i> Akademik
+                        </button>
+                        <button class="sub-tab" data-cert="nonAcademic">
+                            <i class="fas fa-trophy"></i> Non-Akademik
+                        </button>
+                    </div>
+                    
+                    <div class="sub-content active-sub-content" id="cert-academic">
+                        ${renderCertGrid(certs.academic)}
+                    </div>
+                    <div class="sub-content" id="cert-nonAcademic">
+                        ${renderCertGrid(certs.nonAcademic)}
+                    </div>
+                </div>
+            `;
+
+            document.querySelectorAll('[data-cert]').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('[data-cert]').forEach(t => t.classList.remove('active-sub'));
+                    this.classList.add('active-sub');
+                    document.querySelectorAll('#page-certificate .sub-content').forEach(c => c.classList.remove('active-sub-content'));
+                    document.getElementById('cert-' + this.dataset.cert).classList.add('active-sub-content');
+                });
+            });
+        }
+
+        function renderCertGrid(certs) {
+            if (!certs || certs.length === 0) {
+                return `
+                    <div class="coming-soon">
+                        <div class="coming-icon"><i class="fas fa-clock"></i></div>
+                        <h3>Segera Hadir</h3>
+                        <p>Sertifikat sedang dalam proses pengumpulan dan dokumentasi.</p>
+                    </div>
+                `;
+            }
+            return `
+                <div class="cert-grid">
+                    ${certs.map(c => `
+                        <div class="cert-card reveal">
+                            <div class="cert-card-inner">
+                                <div class="cert-card-front">
+                                    <span class="cert-icon"><i class="fas ${c.icon || 'fa-certificate'}"></i></span>
+                                    <h4>${c.name}</h4>
+                                    <p>${c.level || ''} · ${c.desc || ''}</p>
+                                    <span class="cert-badge"><i class="fas fa-check"></i> Tersertifikasi</span>
+                                </div>
+                                <div class="cert-card-back">
+                                    <span class="back-icon"><i class="fas fa-trophy"></i></span>
+                                    <p>${c.name} - ${c.level || 'Kompeten'}</p>
                                 </div>
                             </div>
-                        `).join('') || `
-                            <div class="coming-soon" style="grid-column:1/-1;">
-                                <div class="coming-icon"><i class="fas fa-clock"></i></div>
-                                <h3>Segera Hadir</h3>
-                                <p>Sertifikat kompetensi sedang dalam proses pengumpulan dan dokumentasi.</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // ============================================================
+        // RENDER FOOTER
+        // ============================================================
+        function renderFooter() {
+            const h = data.home;
+            document.getElementById('siteFooter').innerHTML = `
+                <div class="footer-deco"></div>
+                <div class="footer-container">
+                    <!-- Kolom 1: Brand + Foto -->
+                    <div class="footer-brand">
+                        <div class="brand-top">
+                            <img src="foto2.png" alt="Foto ${h.name}" class="footer-photo" onerror="this.style.display='none'" />
+                            <div class="brand-text">
+                                <h4>${h.name}</h4>
+                                <p>${h.major?.split(' - ')[0] || 'TJKT'} · ${h.school || ''}</p>
                             </div>
-                        `}
+                        </div>
+                        <p class="brand-desc">Siswa TJKT yang passionate di bidang jaringan komputer dan web development.</p>
+                        <p class="brand-motto">"${data.about?.motto || 'Solusi Digital, Hasil Maksimal.'}"</p>
                     </div>
+
+                    <!-- Kolom 2: Tautan Cepat -->
+                    <div class="footer-col">
+                        <h5>Tautan Cepat</h5>
+                        <ul>
+                            <li><a href="#" onclick="switchPage('home')"><i class="fas fa-home"></i> Home</a></li>
+                            <li><a href="#" onclick="switchPage('about')"><i class="fas fa-user"></i> About</a></li>
+                            <li><a href="#" onclick="switchPage('project')"><i class="fas fa-folder-open"></i> Projects</a></li>
+                            <li><a href="#" onclick="switchPage('certificate')"><i class="fas fa-certificate"></i> Certificates</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Kolom 3: Kontak -->
+                    <div class="footer-col">
+                        <h5>Kontak</h5>
+                        <ul>
+                            <li><a href="mailto:${h.email || '#'}"><i class="fas fa-envelope"></i> Gmail</a></li>
+                            <li><a href="https://wa.me/${h.phone?.replace(/\s/g, '') || '#'}" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                            <li><a href="https://${h.cvLink || '#'}" target="_blank"><i class="fas fa-file-alt"></i> CV Online</a></li>
+                            <li><a href="https://tiktok.com/${h.tiktok || '#'}" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    © ${new Date().getFullYear()} ${h.name} · Dibuat dengan <i class="fas fa-heart heart"></i> menggunakan HTML, CSS & JavaScript
                 </div>
             `;
         }
@@ -2234,8 +2870,8 @@
             closeSidebar();
             if (pageId) history.pushState(null, '', '#' + pageId);
             
-            if (pageId === 'about') {
-                setTimeout(initInfiniteCarousel, 300);
+            if (pageId === 'about' || pageId === 'home') {
+                setTimeout(initInfiniteCarousels, 300);
             }
         }
 
@@ -2353,9 +2989,8 @@
         // INIT
         // ============================================================
         loadData();
-        console.log('🚀 Portfolio v6.0 — Hard Skill 2 Baris (Kiri & Kanan)!');
-        console.log('📝 About text di atas, skill di bawah');
-        console.log('🔄 Baris 1: ke KIRI | Baris 2: ke KANAN');
+        console.log('🚀 Portfolio v7.0 — Lengkap!');
+        console.log('✨ Fitur: Testimoni Loop, Pengalaman, Bahasa, Hobi, Footer, Sub-tab Certificate');
 
         window.addEventListener('beforeunload', function() {
             if (carouselCleanup) {
