@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        /* ============================================================
-           ROOT VARIABLES
-           ============================================================ */
         :root {
             --bg-primary: #000000;
             --bg-secondary: #0A0A0A;
@@ -58,9 +55,6 @@
             --shadow-glow: 0 0 60px rgba(0, 188, 212, 0.12);
         }
 
-        /* ============================================================
-           RESET & BASE
-           ============================================================ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -76,9 +70,6 @@
         }
         ::selection { background: var(--gradient-start); color: var(--text-inverse); }
 
-        /* ============================================================
-           PARTICLE BACKGROUND
-           ============================================================ */
         #particles-canvas {
             position: fixed;
             top: 0;
@@ -90,9 +81,6 @@
             opacity: 0.5;
         }
 
-        /* ============================================================
-           GRADIENT ORB
-           ============================================================ */
         .gradient-orb {
             position: fixed;
             border-radius: 50%;
@@ -112,16 +100,10 @@
             100% { transform: translate(10px, -10px) scale(1.05); }
         }
 
-        /* ============================================================
-           SCROLLBAR
-           ============================================================ */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: var(--gradient-start); border-radius: 10px; }
 
-        /* ============================================================
-           LOADING
-           ============================================================ */
         .loading {
             display: flex;
             justify-content: center;
@@ -135,9 +117,6 @@
         .loading i { animation: spin 1s linear infinite; margin-right: 12px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* ============================================================
-           NAVBAR
-           ============================================================ */
         .navbar {
             position: fixed;
             top: 0;
@@ -225,9 +204,6 @@
         }
         .navbar .theme-toggle-btn:hover { border-color: var(--gradient-start); color: var(--text-primary); transform: rotate(30deg); }
 
-        /* ============================================================
-           MOBILE HEADER
-           ============================================================ */
         .mobile-header {
             display: none;
             position: fixed;
@@ -296,9 +272,6 @@
         }
         .mobile-theme-btn:hover { border-color: var(--gradient-start); color: var(--text-primary); }
 
-        /* ============================================================
-           MOBILE SIDEBAR
-           ============================================================ */
         .mobile-sidebar {
             position: fixed;
             top: 0;
@@ -443,9 +416,6 @@
             background: var(--text-inverse);
         }
 
-        /* ============================================================
-           SHOW/HIDE NAVBAR
-           ============================================================ */
         @media (min-width: 769px) {
             .mobile-header { display: none !important; }
             .mobile-sidebar { display: none !important; }
@@ -457,9 +427,6 @@
             .mobile-header { display: flex !important; }
         }
 
-        /* ============================================================
-           MAIN CONTENT
-           ============================================================ */
         .main-content {
             max-width: var(--max-width);
             margin: 0 auto;
@@ -470,9 +437,6 @@
         }
         @media (max-width: 768px) { .main-content { padding: 16px 16px 40px; } }
 
-        /* ============================================================
-           PAGES
-           ============================================================ */
         .page { display: none; animation: fadeUp 0.6s ease; }
         .page.active { display: block; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -518,9 +482,6 @@
         .divider .line { flex: 1; height: 1px; background: var(--border-color); }
         .divider .icon { color: var(--gradient-start); font-size: 14px; }
 
-        /* ============================================================
-           HERO
-           ============================================================ */
         .hero {
             min-height: 60vh;
             display: flex;
@@ -774,9 +735,6 @@
             animation: pulse-dot 2s infinite;
         }
 
-        /* ============================================================
-           COUNTER
-           ============================================================ */
         .counter-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -803,9 +761,6 @@
         }
         .counter-item .label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
 
-        /* ============================================================
-           PROJECT HOME
-           ============================================================ */
         .project-grid-home {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -910,9 +865,6 @@
         .view-all-projects:hover { color: var(--gradient-start); }
         .view-all-projects:hover i { transform: translateX(4px); }
 
-        /* ============================================================
-           TESTIMONIALS - INFINITE LOOP KE KANAN
-           ============================================================ */
         .testimonial-loop-wrapper {
             position: relative;
             overflow: hidden;
@@ -1011,9 +963,6 @@
             opacity: 0.5;
         }
 
-        /* ============================================================
-           CONTACT
-           ============================================================ */
         .contact-section {
             padding: 30px 0 10px;
             border-top: 1px solid var(--border-color);
@@ -1044,9 +993,6 @@
         .contact-item:hover { border-color: var(--gradient-start); color: var(--text-primary); transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-glow); }
         .contact-item i { font-size: 16px; color: var(--gradient-start); }
 
-        /* ============================================================
-           ABOUT
-           ============================================================ */
         .about-container {
             display: flex;
             flex-direction: column;
@@ -1092,7 +1038,6 @@
             margin-bottom: 12px;
         }
 
-        /* ===== HARD SKILL 2 BARIS ===== */
         .hard-skill-container {
             display: flex;
             flex-direction: column;
@@ -1186,9 +1131,6 @@
             margin-top: 2px;
         }
 
-        /* ============================================================
-           SOFT SKILLS
-           ============================================================ */
         .soft-skills {
             display: flex;
             flex-wrap: wrap;
@@ -1208,9 +1150,6 @@
         }
         .soft-skills span:hover { border-color: var(--gradient-start); color: var(--text-primary); transform: scale(1.05); box-shadow: var(--shadow-glow); }
 
-        /* ============================================================
-           BAHASA
-           ============================================================ */
         .language-grid {
             display: flex;
             flex-wrap: wrap;
@@ -1239,9 +1178,6 @@
         .language-item .lang-name { font-weight: 600; color: var(--text-primary); }
         .language-item .lang-level { font-size: 11px; color: var(--text-muted); }
 
-        /* ============================================================
-           HOBI
-           ============================================================ */
         .hobby-grid {
             display: flex;
             flex-wrap: wrap;
@@ -1268,9 +1204,6 @@
         }
         .hobby-item i { color: var(--gradient-start); font-size: 14px; }
 
-        /* ============================================================
-           PENGALAMAN & ORGANISASI
-           ============================================================ */
         .experience-list {
             display: flex;
             flex-direction: column;
@@ -1389,18 +1322,12 @@
             color: var(--text-primary);
         }
 
-        /* ============================================================
-           TESTIMONI DI ABOUT (STATIS)
-           ============================================================ */
         .testimonial-static-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 16px;
         }
 
-        /* ============================================================
-           PROJECTS PAGE
-           ============================================================ */
         .project-tabs {
             display: flex;
             gap: 6px;
@@ -1559,9 +1486,6 @@
         .sub-content { display: none; animation: fadeUp 0.4s ease; }
         .sub-content.active-sub-content { display: block; }
 
-        /* ============================================================
-           CERTIFICATES - SUB TAB
-           ============================================================ */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1632,9 +1556,6 @@
         .coming-soon h3 { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
         .coming-soon p { color: var(--text-muted); font-size: 14px; }
 
-        /* ============================================================
-           FOOTER
-           ============================================================ */
         .site-footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
@@ -1774,9 +1695,6 @@
             }
         }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
         @media (max-width: 992px) {
             .hero .container {
                 grid-template-columns: 1fr 1.4fr 0.8fr;
@@ -1878,9 +1796,6 @@
             .about-text-full { padding: 14px; }
         }
 
-        /* ============================================================
-           TOUCH TARGETS
-           ============================================================ */
         .btn,
         .project-tab,
         .sub-tab,
@@ -1894,9 +1809,6 @@
             touch-action: manipulation;
         }
 
-        /* ============================================================
-           REDUCED MOTION
-           ============================================================ */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -1936,15 +1848,12 @@
 </head>
 <body>
 
-    <!-- ===== PARTICLE BACKGROUND ===== -->
     <canvas id="particles-canvas"></canvas>
 
-    <!-- ===== GRADIENT ORBS ===== -->
     <div class="gradient-orb orb1"></div>
     <div class="gradient-orb orb2"></div>
     <div class="gradient-orb orb3"></div>
 
-    <!-- ===== NAVBAR DESKTOP ===== -->
     <nav class="navbar" id="navbarDesktop">
         <a href="#" class="logo" onclick="switchPage('home')">
             <span class="logo-icon">⚡</span>
@@ -1963,7 +1872,6 @@
         </div>
     </nav>
 
-    <!-- ===== MOBILE HEADER ===== -->
     <header class="mobile-header">
         <button class="burger-btn" id="burgerBtn"><i class="fas fa-bars"></i></button>
         <a href="#" class="logo" onclick="switchPage('home')">
@@ -1974,7 +1882,6 @@
         </div>
     </header>
 
-    <!-- ===== MOBILE SIDEBAR ===== -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="mobile-sidebar" id="mobileSidebar">
         <div class="sidebar-header">
@@ -1998,26 +1905,17 @@
         </div>
     </aside>
 
-    <!-- ===== MAIN CONTENT ===== -->
     <main class="main-content">
         <div id="loading" class="loading">
             <i class="fas fa-spinner"></i> Memuat data...
         </div>
 
-        <!-- HOME -->
         <section class="page active" id="page-home"></section>
-
-        <!-- ABOUT -->
         <section class="page" id="page-about"></section>
-
-        <!-- PROJECTS -->
         <section class="page" id="page-project"></section>
-
-        <!-- CERTIFICATES -->
         <section class="page" id="page-certificate"></section>
     </main>
 
-    <!-- ===== FOOTER (di-render dari JS) ===== -->
     <footer class="site-footer" id="siteFooter"></footer>
 
     <script>
@@ -2101,10 +1999,23 @@
         animateParticles();
 
         // ============================================================
-        // LOAD DATA.JSON
+        // GLOBAL DATA
         // ============================================================
         let data = null;
 
+        // ============================================================
+        // HELPER: HITUNG TOTAL SERTIFIKAT
+        // ============================================================
+        function getTotalCerts() {
+            if (!data || !data.certificates) return 0;
+            const academic = data.certificates.academic?.length || 0;
+            const nonAcademic = data.certificates.nonAcademic?.length || 0;
+            return academic + nonAcademic;
+        }
+
+        // ============================================================
+        // LOAD DATA.JSON
+        // ============================================================
         async function loadData() {
             try {
                 const res = await fetch('data.json?' + Date.now());
@@ -2131,7 +2042,7 @@
             if (!data) return;
 
             document.getElementById('projectBadge').textContent = data.projects?.length || 0;
-            const totalCerts = (data.certificates?.academic?.length || 0) + (data.certificates?.nonAcademic?.length || 0);
+            const totalCerts = getTotalCerts();
             document.getElementById('certBadge').textContent = totalCerts;
             document.getElementById('mobileProjectBadge').textContent = data.projects?.length || 0;
             document.getElementById('mobileCertBadge').textContent = totalCerts;
@@ -2200,6 +2111,7 @@
         // ============================================================
         function renderHome() {
             const h = data.home;
+            const totalCerts = getTotalCerts();
             document.getElementById('page-home').innerHTML = `
                 <div class="hero">
                     <div class="container">
@@ -2279,7 +2191,6 @@
                     </div>
                 </div>
 
-                <!-- TESTIMONI DI HOME (INFINITE LOOP KE KANAN) -->
                 <div class="section">
                     <span class="section-label">Testimoni</span>
                     <h2 class="section-title reveal">Apa Kata <span class="highlight">Mereka</span></h2>
@@ -2312,7 +2223,6 @@
                 </div>
             `;
 
-            // Typing effect
             const words = ['Siswa TJKT SMKN 1 Losarang', 'Network Enthusiast', 'Web Developer', 'Python & Linux Learner'];
             let i = 0,
                 j = 0,
@@ -2338,7 +2248,6 @@
                 setTimeout(typeEffect, 1000);
             }
 
-            // 3D Tilt
             const wrapper = document.getElementById('photoWrapper');
             if (wrapper && window.innerWidth >= 768) {
                 wrapper.addEventListener('mousemove', function(e) {
@@ -2358,11 +2267,11 @@
         }
 
         // ============================================================
-        // RENDER TESTIMONIAL CARDS (dipakai di Home & About)
+        // RENDER TESTIMONIAL CARDS
         // ============================================================
         function renderTestimonialCards(testimonials) {
             if (!testimonials || testimonials.length === 0) return '';
-            const list = testimonials.length > 0 ? [...testimonials, ...testimonials] : [];
+            const list = [...testimonials, ...testimonials];
             return list.map(t => `
                 <div class="testimonial-card">
                     <div class="testi-header">
@@ -2401,7 +2310,6 @@
         function renderAbout() {
             const a = data.about;
             
-            // Filter hard skills - HAPUS LINUX
             const hardSkills = (a.hardSkills || []).filter(s => 
                 !s.name.toLowerCase().includes('linux')
             );
@@ -2424,13 +2332,11 @@
                     </div>
 
                     <div class="about-container">
-                        <!-- ABOUT TEXT -->
                         <div class="about-text-full reveal">
                             <p>${a.bio || ''}</p>
                             <p class="motto">"${a.motto || ''}"</p>
                         </div>
 
-                        <!-- HARD SKILL -->
                         <div class="skills-section-full reveal">
                             <div>
                                 <h4><i class="fas fa-tools"></i> Hard Skill</h4>
@@ -2460,7 +2366,6 @@
                                 </div>
                             </div>
 
-                            <!-- SOFT SKILL -->
                             <div>
                                 <h4><i class="fas fa-brain"></i> Soft Skill</h4>
                                 <div class="soft-skills">
@@ -2468,7 +2373,6 @@
                                 </div>
                             </div>
 
-                            <!-- BAHASA -->
                             <div>
                                 <h4><i class="fas fa-globe"></i> Bahasa</h4>
                                 <div class="language-grid">
@@ -2482,7 +2386,6 @@
                                 </div>
                             </div>
 
-                            <!-- HOBI -->
                             <div>
                                 <h4><i class="fas fa-heart"></i> Hobi</h4>
                                 <div class="hobby-grid">
@@ -2495,7 +2398,6 @@
                                 </div>
                             </div>
 
-                            <!-- PENGALAMAN & ORGANISASI -->
                             <div>
                                 <h4><i class="fas fa-briefcase"></i> Pengalaman & Organisasi</h4>
                                 <div class="experience-list">
@@ -2541,7 +2443,6 @@
                                 </div>
                             </div>
 
-                            <!-- TESTIMONI (STATIS) -->
                             <div>
                                 <h4><i class="fas fa-comments"></i> Testimoni</h4>
                                 <div class="testimonial-static-grid">
@@ -2557,7 +2458,7 @@
         }
 
         // ============================================================
-        // INFINITE LOOP CAROUSEL (SKILL & TESTIMONI)
+        // INFINITE LOOP CAROUSEL
         // ============================================================
         let carouselCleanup = null;
 
@@ -2569,7 +2470,6 @@
 
             const cleanupFunctions = [];
 
-            // Skill tracks
             const trackLeft = document.getElementById('skillTrackLeft');
             const trackRight = document.getElementById('skillTrackRight');
             const skillRows = document.querySelectorAll('.skill-loop-row');
@@ -2598,7 +2498,6 @@
                 });
             });
 
-            // Testimonial track
             const testiTrack = document.getElementById('testimonialTrack');
             const testiWrapper = document.getElementById('testimonialWrapper');
 
@@ -2724,7 +2623,7 @@
         }
 
         // ============================================================
-        // RENDER CERTIFICATES (DENGAN SUB-TAB)
+        // RENDER CERTIFICATES
         // ============================================================
         function renderCertificates() {
             const certs = data.certificates || { academic: [], nonAcademic: [] };
@@ -2807,7 +2706,6 @@
             document.getElementById('siteFooter').innerHTML = `
                 <div class="footer-deco"></div>
                 <div class="footer-container">
-                    <!-- Kolom 1: Brand + Foto -->
                     <div class="footer-brand">
                         <div class="brand-top">
                             <img src="foto2.png" alt="Foto ${h.name}" class="footer-photo" onerror="this.style.display='none'" />
@@ -2820,7 +2718,6 @@
                         <p class="brand-motto">"${data.about?.motto || 'Solusi Digital, Hasil Maksimal.'}"</p>
                     </div>
 
-                    <!-- Kolom 2: Tautan Cepat -->
                     <div class="footer-col">
                         <h5>Tautan Cepat</h5>
                         <ul>
@@ -2831,7 +2728,6 @@
                         </ul>
                     </div>
 
-                    <!-- Kolom 3: Kontak -->
                     <div class="footer-col">
                         <h5>Kontak</h5>
                         <ul>
@@ -2989,8 +2885,8 @@
         // INIT
         // ============================================================
         loadData();
-        console.log('🚀 Portfolio v7.0 — Lengkap!');
-        console.log('✨ Fitur: Testimoni Loop, Pengalaman, Bahasa, Hobi, Footer, Sub-tab Certificate');
+        console.log('🚀 Portfolio v7.1 — Bug Fixed!');
+        console.log('✅ getTotalCerts() berfungsi dengan benar');
 
         window.addEventListener('beforeunload', function() {
             if (carouselCleanup) {
