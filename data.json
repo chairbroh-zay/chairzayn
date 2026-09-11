@@ -32,8 +32,101 @@
       "Kreatif",
       "Imajinasi Tinggi",
       "Target Oriented"
+    ],
+    "languages": [
+      { "name": "Indonesia", "level": "Aktif", "flag": "🇮🇩" },
+      { "name": "Inggris", "level": "Pasif", "flag": "🇬🇧" }
+    ],
+    "hobbies": [
+      { "name": "Baca Manga/Manhwa", "icon": "fa-book-open" },
+      { "name": "Gaming", "icon": "fa-gamepad" },
+      { "name": "Bersih-bersih", "icon": "fa-broom" }
+    ],
+    "experiences": [
+      {
+        "id": 1,
+        "title": "PAJARBARA (Pasukan Pelajar Pengibar Bendera)",
+        "position": "Seksi Sarana dan Prasarana",
+        "status": "Anggota Aktif",
+        "location": "SMKN 1 Losarang",
+        "icon": "fa-flag",
+        "tasks": [
+          "Mengelola fasilitas dan perlengkapan ekskul",
+          "Memastikan sarana tersedia sebelum kegiatan",
+          "Merawat dan menjaga kebersihan ruang ekskul"
+        ],
+        "programs": [
+          "Kreativitas anggota",
+          "Pembersihan sanggar/ruang ekskul",
+          "Pembuatan papan mading",
+          "Membantu program kerja seksi lain"
+        ],
+        "skills": [
+          "Manajemen fasilitas",
+          "Kerja sama tim",
+          "Tanggung jawab",
+          "Komunikasi"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Panitia LKBB Laskar Pantura",
+        "position": "Pendataan Nilai",
+        "status": "Panitia",
+        "location": "SMKN 1 Losarang",
+        "year": "2026",
+        "icon": "fa-clipboard-list",
+        "tasks": [
+          "Mencatat nilai peserta lomba",
+          "Merekap nilai dengan akurat",
+          "Berkoordinasi dengan panitia lain"
+        ],
+        "skills": [
+          "Ketelitian",
+          "Manajemen data",
+          "Kerja di bawah tekanan",
+          "Kerja sama tim"
+        ]
+      }
     ]
   },
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Pak Ahmad",
+      "role": "Guru Pembimbing",
+      "text": "Chairil adalah siswa yang rajin, disiplin, dan cepat memahami materi. Ia selalu menyelesaikan tugas tepat waktu.",
+      "initial": "PA"
+    },
+    {
+      "id": 2,
+      "name": "Bu Siti",
+      "role": "Guru TJKT",
+      "text": "Saya bangga memiliki murid seperti Chairil. Ia kreatif, aktif di kelas, dan selalu ingin tahu hal baru.",
+      "initial": "BS"
+    },
+    {
+      "id": 3,
+      "name": "Rizky",
+      "role": "Teman Sekelas",
+      "text": "Chairil itu solid banget. Kalau ada teman yang kesulitan, dia selalu siap bantu.",
+      "initial": "RZ"
+    },
+    {
+      "id": 4,
+      "name": "Dina",
+      "role": "Teman Sekelas",
+      "text": "Rajin dan jago di bidang jaringan. Sering jadi tempat bertanya kalau ada tugas TKJ.",
+      "initial": "DN"
+    },
+    {
+      "id": 5,
+      "name": "Fajar",
+      "role": "Teman Sekelas",
+      "text": "Kerja timnya bagus. Kalau ada proyek kelompok, dia selalu berkontribusi maksimal.",
+      "initial": "FJ"
+    }
+  ],
   "projects": [
     {
       "id": 1,
@@ -80,27 +173,45 @@
       "date": "2026"
     }
   ],
-  "certificates": [
-    {
-      "id": 1,
-      "name": "Microsoft Excel",
-      "icon": "fa-file-excel",
-      "level": "Mahir",
-      "desc": "Formula & Pivot"
-    },
-    {
-      "id": 2,
-      "name": "Microsoft PowerPoint",
-      "icon": "fa-file-powerpoint",
-      "level": "Mahir",
-      "desc": "Presentasi & Animasi"
-    },
-    {
-      "id": 3,
-      "name": "Microsoft Word",
-      "icon": "fa-file-word",
-      "level": "Mahir",
-      "desc": "Formatting & Mail Merge"
-    }
-  ]
+  "certificates": {
+    "academic": [
+      {
+        "id": 1,
+        "name": "Sertifikat Akademik 1",
+        "icon": "fa-file-excel",
+        "level": "Mahir",
+        "desc": "Formula & Pivot"
+      },
+      {
+        "id": 2,
+        "name": "Sertifikat Akademik 2",
+        "icon": "fa-file-powerpoint",
+        "level": "Mahir",
+        "desc": "Presentasi & Animasi"
+      },
+      {
+        "id": 3,
+        "name": "Sertifikat Akademik 3",
+        "icon": "fa-file-word",
+        "level": "Mahir",
+        "desc": "Formatting & Mail Merge"
+      }
+    ],
+    "nonAcademic": [
+      {
+        "id": 1,
+        "name": "Sertifikat Non-Akademik 1",
+        "icon": "fa-trophy",
+        "level": "Juara",
+        "desc": "Lomba LKBB"
+      },
+      {
+        "id": 2,
+        "name": "Sertifikat Non-Akademik 2",
+        "icon": "fa-medal",
+        "level": "Peserta",
+        "desc": "Lomba Jaringan"
+      }
+    ]
+  }
 }
