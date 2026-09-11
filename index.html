@@ -93,6 +93,8 @@
         .gradient-orb.orb1 { width: 400px; height: 400px; background: var(--gradient-bg); top: -10%; right: -5%; animation-delay: 0s; }
         .gradient-orb.orb2 { width: 300px; height: 300px; background: var(--gradient-bg); bottom: -5%; left: -5%; animation-delay: -7s; opacity: 0.2; }
         .gradient-orb.orb3 { width: 200px; height: 200px; background: var(--gradient-bg); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -14s; opacity: 0.1; }
+        .gradient-orb.orb4 { width: 250px; height: 250px; background: var(--gradient-bg); top: 20%; left: 10%; animation-delay: -5s; opacity: 0.15; }
+        .gradient-orb.orb5 { width: 350px; height: 350px; background: var(--gradient-bg); bottom: 20%; right: 15%; animation-delay: -10s; opacity: 0.15; }
         @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(30px, -20px) scale(1.1); }
@@ -1572,6 +1574,7 @@
             grid-template-columns: 1.5fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 30px;
+            align-items: center;
         }
 
         .site-footer .footer-brand {
@@ -1587,13 +1590,20 @@
         }
 
         .site-footer .footer-brand .footer-photo {
-            width: 64px;
-            height: 64px;
+            width: 45%;
+            max-width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
             border-radius: var(--radius-md);
             object-fit: cover;
             border: 2px solid var(--gradient-start);
-            box-shadow: 0 0 20px rgba(0, 188, 212, 0.2);
+            box-shadow: 0 0 30px rgba(0, 188, 212, 0.25);
             flex-shrink: 0;
+            transition: var(--transition-bounce);
+        }
+        .site-footer .footer-brand .footer-photo:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 50px rgba(0, 188, 212, 0.4);
         }
 
         .site-footer .footer-brand .brand-text h4 {
@@ -1668,6 +1678,7 @@
             text-align: center;
             font-size: 12px;
             color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .site-footer .footer-bottom .heart {
@@ -1685,6 +1696,20 @@
             opacity: 0.5;
         }
 
+        @media (max-width: 992px) {
+            .site-footer .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+            .site-footer .footer-brand {
+                grid-column: 1 / -1;
+            }
+            .site-footer .footer-brand .footer-photo {
+                width: 35%;
+                max-width: 300px;
+            }
+        }
+
         @media (max-width: 768px) {
             .site-footer .footer-container {
                 grid-template-columns: 1fr;
@@ -1692,6 +1717,14 @@
             }
             .site-footer {
                 padding: 30px 16px 16px;
+            }
+            .site-footer .footer-brand .footer-photo {
+                width: 64px;
+                height: 64px;
+                aspect-ratio: 1/1;
+            }
+            .site-footer .footer-brand .brand-top {
+                align-items: center;
             }
         }
 
@@ -1853,6 +1886,8 @@
     <div class="gradient-orb orb1"></div>
     <div class="gradient-orb orb2"></div>
     <div class="gradient-orb orb3"></div>
+    <div class="gradient-orb orb4"></div>
+    <div class="gradient-orb orb5"></div>
 
     <nav class="navbar" id="navbarDesktop">
         <a href="#" class="logo" onclick="switchPage('home')">
@@ -1920,16 +1955,25 @@
 
     <script>
         // ============================================================
-        // PARTICLES
+        // PARTICLES (Diperbanyak: 100 untuk desktop/tablet, 60 untuk mobile)
         // ============================================================
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        let particleCount = 60;
+        
+        function getParticleCount() {
+            return window.innerWidth >= 768 ? 100 : 60;
+        }
+        let particleCount = getParticleCount();
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            const newCount = getParticleCount();
+            if (newCount !== particleCount) {
+                particleCount = newCount;
+                initParticles();
+            }
         }
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
@@ -2003,9 +2047,6 @@
         // ============================================================
         let data = null;
 
-        // ============================================================
-        // HELPER: HITUNG TOTAL SERTIFIKAT
-        // ============================================================
         function getTotalCerts() {
             if (!data || !data.certificates) return 0;
             const academic = data.certificates.academic?.length || 0;
@@ -2013,9 +2054,6 @@
             return academic + nonAcademic;
         }
 
-        // ============================================================
-        // LOAD DATA.JSON
-        // ============================================================
         async function loadData() {
             try {
                 const res = await fetch('data.json?' + Date.now());
@@ -2035,9 +2073,6 @@
             }
         }
 
-        // ============================================================
-        // RENDER ALL
-        // ============================================================
         function renderAll() {
             if (!data) return;
 
@@ -2073,9 +2108,6 @@
             setTimeout(initInfiniteCarousels, 100);
         }
 
-        // ============================================================
-        // FUNGSI GET SKILL ICON & DESCRIPTION
-        // ============================================================
         function getSkillIcon(name) {
             const icons = {
                 'Router & Switch': 'fa-route',
@@ -2106,9 +2138,6 @@
             return descs[name] || 'Skill';
         }
 
-        // ============================================================
-        // RENDER HOME
-        // ============================================================
         function renderHome() {
             const h = data.home;
             const totalCerts = getTotalCerts();
@@ -2266,9 +2295,6 @@
             }
         }
 
-        // ============================================================
-        // RENDER TESTIMONIAL CARDS
-        // ============================================================
         function renderTestimonialCards(testimonials) {
             if (!testimonials || testimonials.length === 0) return '';
             const list = [...testimonials, ...testimonials];
@@ -2304,9 +2330,6 @@
             `).join('');
         }
 
-        // ============================================================
-        // RENDER ABOUT
-        // ============================================================
         function renderAbout() {
             const a = data.about;
             
@@ -2457,9 +2480,6 @@
             setTimeout(initInfiniteCarousels, 50);
         }
 
-        // ============================================================
-        // INFINITE LOOP CAROUSEL
-        // ============================================================
         let carouselCleanup = null;
 
         function initInfiniteCarousels() {
@@ -2520,9 +2540,6 @@
             carouselCleanup = () => { cleanupFunctions.forEach(fn => fn()); };
         }
 
-        // ============================================================
-        // RENDER PROJECTS
-        // ============================================================
         function renderProjects() {
             const projects = data.projects || [];
             const tkjProjects = projects.filter(p => p.category === 'TKJ');
@@ -2622,9 +2639,6 @@
             });
         }
 
-        // ============================================================
-        // RENDER CERTIFICATES
-        // ============================================================
         function renderCertificates() {
             const certs = data.certificates || { academic: [], nonAcademic: [] };
             
@@ -2698,9 +2712,6 @@
             `;
         }
 
-        // ============================================================
-        // RENDER FOOTER
-        // ============================================================
         function renderFooter() {
             const h = data.home;
             document.getElementById('siteFooter').innerHTML = `
@@ -2709,10 +2720,10 @@
                     <div class="footer-brand">
                         <div class="brand-top">
                             <img src="foto2.png" alt="Foto ${h.name}" class="footer-photo" onerror="this.style.display='none'" />
-                            <div class="brand-text">
-                                <h4>${h.name}</h4>
-                                <p>${h.major?.split(' - ')[0] || 'TJKT'} · ${h.school || ''}</p>
-                            </div>
+                        </div>
+                        <div class="brand-text">
+                            <h4>${h.name}</h4>
+                            <p>${h.major?.split(' - ')[0] || 'TJKT'} · ${h.school || ''}</p>
                         </div>
                         <p class="brand-desc">Siswa TJKT yang passionate di bidang jaringan komputer dan web development.</p>
                         <p class="brand-motto">"${data.about?.motto || 'Solusi Digital, Hasil Maksimal.'}"</p>
@@ -2739,14 +2750,11 @@
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    © ${new Date().getFullYear()} ${h.name} · Dibuat dengan <i class="fas fa-heart heart"></i> menggunakan HTML, CSS & JavaScript
+                    © 2026 · Desain layout inspired by rehan.web.id, designed by chairbroh
                 </div>
             `;
         }
 
-        // ============================================================
-        // NAVIGATION
-        // ============================================================
         const desktopLinks = document.querySelectorAll('.navbar .nav-links a');
         const mobileLinks = document.querySelectorAll('.mobile-sidebar nav a');
         const pages = {
@@ -2786,9 +2794,6 @@
 
         window.switchPage = switchPage;
 
-        // ============================================================
-        // MOBILE SIDEBAR
-        // ============================================================
         const burgerBtn = document.getElementById('burgerBtn');
         const mobileSidebar = document.getElementById('mobileSidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -2817,9 +2822,6 @@
             if (e.key === 'Escape' && mobileSidebar.classList.contains('open')) closeSidebar();
         });
 
-        // ============================================================
-        // THEME TOGGLE
-        // ============================================================
         const html = document.documentElement;
         const desktopThemeToggle = document.getElementById('desktopThemeToggle');
         const mobileThemeToggle = document.getElementById('mobileThemeToggle');
@@ -2849,9 +2851,6 @@
         mobileThemeToggle.addEventListener('click', () => setTheme(html.getAttribute('data-theme') !== 'light'));
         sidebarThemeSwitch.addEventListener('change', function() { setTheme(this.checked); });
 
-        // ============================================================
-        // HASH ROUTING
-        // ============================================================
         function loadFromHash() {
             const hash = window.location.hash.replace('#', '');
             if (hash && pages[hash]) {
@@ -2870,9 +2869,6 @@
             else loadFromHash();
         });
 
-        // ============================================================
-        // KEYBOARD SHORTCUTS
-        // ============================================================
         document.addEventListener('keydown', function(e) {
             if (e.altKey && e.key >= '1' && e.key <= '4') {
                 e.preventDefault();
@@ -2881,12 +2877,9 @@
             }
         });
 
-        // ============================================================
-        // INIT
-        // ============================================================
         loadData();
-        console.log('🚀 Portfolio v7.1 — Bug Fixed!');
-        console.log('✅ getTotalCerts() berfungsi dengan benar');
+        console.log('🚀 Portfolio v7.2 — Footer Foto Besar + Background Rame + Copyright Baru');
+        console.log('✨ Perubahan: Footer photo 45%, Particle 100, Orb 5, Copyright chairbroh');
 
         window.addEventListener('beforeunload', function() {
             if (carouselCleanup) {
