@@ -40,9 +40,6 @@
             --skill-gap: 16px;
         }
 
-        /* ============================================================
-           LIGHT MODE
-           ============================================================ */
         [data-theme="light"] {
             --bg-primary: #FFFFFF;
             --bg-secondary: #F5F5F5;
@@ -947,22 +944,30 @@
         .contact-item i { font-size: 16px; color: var(--gradient-start); }
 
         /* ============================================================
-           ABOUT - HARD SKILL INFINITE LOOP
+           ABOUT - ABOUT TEXT DI ATAS, SKILL DI BAWAH
            ============================================================ */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
             margin-top: 16px;
         }
-        .about-text {
+
+        /* About text full width */
+        .about-text-full {
+            width: 100%;
             display: flex;
             flex-direction: column;
             gap: 12px;
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
         }
-        .about-text p { color: var(--text-secondary); font-size: 15px; line-height: 1.8; }
-        .about-text p strong { color: var(--text-primary); }
-        .about-text .motto {
+        .about-text-full p { color: var(--text-secondary); font-size: 15px; line-height: 1.8; }
+        .about-text-full p strong { color: var(--text-primary); }
+        .about-text-full .motto {
             font-size: 20px;
             font-weight: 700;
             background: var(--gradient-bg);
@@ -974,20 +979,33 @@
         }
         @keyframes pulseMotto { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
 
-        .skills-section {
+        /* Skill section */
+        .skills-section-full {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .skills-section-full h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== HARD SKILL 2 BARIS ===== */
+        .hard-skill-container {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
-        .skills-section h4 { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
 
-        /* ===== INFINITE LOOP CAROUSEL ===== */
-        .skill-loop-wrapper {
+        .skill-loop-row {
             position: relative;
             overflow: hidden;
             width: 100%;
             border-radius: var(--radius-md);
-            padding: 6px 0;
+            padding: 4px 0;
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
@@ -996,8 +1014,17 @@
             display: flex;
             gap: var(--skill-gap);
             width: max-content;
-            animation: scrollLeft var(--scroll-duration, 30s) linear infinite;
             will-change: transform;
+        }
+
+        /* Baris 1: bergerak ke KIRI */
+        .skill-loop-track.track-left {
+            animation: scrollLeft var(--scroll-duration, 30s) linear infinite;
+        }
+
+        /* Baris 2: bergerak ke KANAN */
+        .skill-loop-track.track-right {
+            animation: scrollRight var(--scroll-duration, 30s) linear infinite;
         }
 
         .skill-loop-track.paused {
@@ -1007,6 +1034,11 @@
         @keyframes scrollLeft {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        @keyframes scrollRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
         }
 
         .skill-card {
@@ -1064,7 +1096,6 @@
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 4px;
         }
         .soft-skills span {
             padding: 4px 12px;
@@ -1326,7 +1357,6 @@
             .hero-extra-photo { width: 45%; height: 55vh; max-height: 400px; }
             .project-grid-home { grid-template-columns: repeat(2, 1fr); }
             .project-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-            .about-grid { grid-template-columns: 1fr 1fr; }
             :root {
                 --skill-card-width: 160px;
                 --skill-gap: 14px;
@@ -1373,7 +1403,6 @@
                 justify-content: center;
                 min-width: 100px;
             }
-            .about-grid { grid-template-columns: 1fr; gap: 20px; }
             .floating-icons { display: none; }
             .sub-tabs { justify-content: center; }
             .sub-tab { font-size: 11px; padding: 4px 12px; min-height: 30px; }
@@ -1388,6 +1417,7 @@
             .skill-card .skill-icon { font-size: 24px; }
             .skill-card h5 { font-size: 13px; }
             .skill-card .skill-desc { font-size: 10px; }
+            .about-text-full { padding: 18px; }
         }
 
         @media (max-width: 420px) {
@@ -1412,6 +1442,7 @@
             .skill-card .skill-icon { font-size: 20px; }
             .skill-card h5 { font-size: 12px; }
             .skill-card .skill-desc { font-size: 9px; }
+            .about-text-full { padding: 14px; }
         }
 
         /* ============================================================
@@ -1689,7 +1720,6 @@
                 document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
             }, 300);
             
-            // Init infinite loop carousel after render
             setTimeout(initInfiniteCarousel, 100);
         }
 
@@ -1877,7 +1907,7 @@
         }
 
         // ============================================================
-        // RENDER ABOUT (HARD SKILL INFINITE LOOP + SOFT SKILL)
+        // RENDER ABOUT - ABOUT TEXT DI ATAS, HARD SKILL 2 BARIS
         // ============================================================
         function renderAbout() {
             const a = data.about;
@@ -1887,8 +1917,14 @@
                 !s.name.toLowerCase().includes('linux')
             );
 
-            // Duplikat array untuk infinite loop (2x lipat)
-            const duplicatedSkills = [...hardSkills, ...hardSkills];
+            // Bagi jadi 2 kelompok
+            const midPoint = Math.ceil(hardSkills.length / 2);
+            const row1Skills = hardSkills.slice(0, midPoint);
+            const row2Skills = hardSkills.slice(midPoint);
+
+            // Duplikat untuk infinite loop
+            const row1Duplicated = [...row1Skills, ...row1Skills];
+            const row2Duplicated = [...row2Skills, ...row2Skills];
 
             document.getElementById('page-about').innerHTML = `
                 <div class="section">
@@ -1899,23 +1935,42 @@
                         <span class="icon"><i class="fas fa-user-astronaut"></i></span>
                         <span class="line"></span>
                     </div>
-                    <div class="about-grid">
-                        <div class="about-text reveal">
+
+                    <div class="about-container">
+                        <!-- ABOUT TEXT - FULL WIDTH DI ATAS -->
+                        <div class="about-text-full reveal">
                             <p>${a.bio || ''}</p>
                             <p class="motto">"${a.motto || ''}"</p>
                         </div>
-                        <div class="skills-section reveal">
+
+                        <!-- SKILL SECTION DI BAWAH -->
+                        <div class="skills-section-full reveal">
                             <div>
                                 <h4><i class="fas fa-tools"></i> Hard Skill</h4>
-                                <div class="skill-loop-wrapper" id="skillLoopWrapper">
-                                    <div class="skill-loop-track" id="skillLoopTrack">
-                                        ${duplicatedSkills.map(s => `
-                                            <div class="skill-card">
-                                                <span class="skill-icon"><i class="fas ${getSkillIcon(s.name)}"></i></span>
-                                                <h5>${s.name}</h5>
-                                                <p class="skill-desc">${getSkillDesc(s.name)}</p>
-                                            </div>
-                                        `).join('')}
+                                <div class="hard-skill-container">
+                                    <!-- Baris 1: Bergerak ke KIRI -->
+                                    <div class="skill-loop-row" data-direction="left">
+                                        <div class="skill-loop-track track-left" id="skillTrackLeft">
+                                            ${row1Duplicated.map(s => `
+                                                <div class="skill-card">
+                                                    <span class="skill-icon"><i class="fas ${getSkillIcon(s.name)}"></i></span>
+                                                    <h5>${s.name}</h5>
+                                                    <p class="skill-desc">${getSkillDesc(s.name)}</p>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                    <!-- Baris 2: Bergerak ke KANAN -->
+                                    <div class="skill-loop-row" data-direction="right">
+                                        <div class="skill-loop-track track-right" id="skillTrackRight">
+                                            ${row2Duplicated.map(s => `
+                                                <div class="skill-card">
+                                                    <span class="skill-icon"><i class="fas ${getSkillIcon(s.name)}"></i></span>
+                                                    <h5>${s.name}</h5>
+                                                    <p class="skill-desc">${getSkillDesc(s.name)}</p>
+                                                </div>
+                                            `).join('')}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1930,68 +1985,86 @@
                 </div>
             `;
 
-            // Init infinite loop after DOM update
+            // Init infinite loop
             setTimeout(initInfiniteCarousel, 50);
         }
 
         // ============================================================
-        // INFINITE LOOP CAROUSEL
+        // INFINITE LOOP CAROUSEL - 2 BARIS (KIRI & KANAN)
         // ============================================================
         let carouselCleanup = null;
 
         function initInfiniteCarousel() {
-            // Cleanup previous if exists
+            // Cleanup previous
             if (carouselCleanup) {
                 carouselCleanup();
                 carouselCleanup = null;
             }
 
-            const track = document.getElementById('skillLoopTrack');
-            const wrapper = document.getElementById('skillLoopWrapper');
-            if (!track || !wrapper) return;
+            const trackLeft = document.getElementById('skillTrackLeft');
+            const trackRight = document.getElementById('skillTrackRight');
+            const rows = document.querySelectorAll('.skill-loop-row');
+
+            if (!trackLeft || !trackRight) return;
 
             // Hitung durasi berdasarkan jumlah card
-            const cardCount = track.querySelectorAll('.skill-card').length;
-            const duration = Math.max(20, cardCount * 3);
-            track.style.setProperty('--scroll-duration', duration + 's');
-
-            // Hover pause
-            let isPaused = false;
+            const leftCards = trackLeft.querySelectorAll('.skill-card').length;
+            const rightCards = trackRight.querySelectorAll('.skill-card').length;
             
-            const pauseCarousel = () => {
-                if (!isPaused) {
-                    track.classList.add('paused');
-                    isPaused = true;
-                }
-            };
+            const leftDuration = Math.max(20, leftCards * 2.5);
+            const rightDuration = Math.max(20, rightCards * 2.5);
+            
+            trackLeft.style.setProperty('--scroll-duration', leftDuration + 's');
+            trackRight.style.setProperty('--scroll-duration', rightDuration + 's');
 
-            const resumeCarousel = () => {
-                if (isPaused) {
+            // Hover pause untuk kedua track
+            const cleanupFunctions = [];
+
+            rows.forEach(row => {
+                const track = row.querySelector('.skill-loop-track');
+                if (!track) return;
+
+                let isPaused = false;
+
+                const pauseCarousel = () => {
+                    if (!isPaused) {
+                        track.classList.add('paused');
+                        isPaused = true;
+                    }
+                };
+
+                const resumeCarousel = () => {
+                    if (isPaused) {
+                        track.classList.remove('paused');
+                        isPaused = false;
+                    }
+                };
+
+                row.addEventListener('mouseenter', pauseCarousel);
+                row.addEventListener('mouseleave', resumeCarousel);
+
+                // Touch support
+                let touchTimeout = null;
+                row.addEventListener('touchstart', () => {
+                    pauseCarousel();
+                    clearTimeout(touchTimeout);
+                }, { passive: true });
+                
+                row.addEventListener('touchend', () => {
+                    touchTimeout = setTimeout(resumeCarousel, 3000);
+                }, { passive: true });
+
+                cleanupFunctions.push(() => {
+                    row.removeEventListener('mouseenter', pauseCarousel);
+                    row.removeEventListener('mouseleave', resumeCarousel);
+                    clearTimeout(touchTimeout);
                     track.classList.remove('paused');
-                    isPaused = false;
-                }
-            };
-
-            wrapper.addEventListener('mouseenter', pauseCarousel);
-            wrapper.addEventListener('mouseleave', resumeCarousel);
-            
-            // Touch support - pause on touch, resume after
-            let touchTimeout = null;
-            wrapper.addEventListener('touchstart', () => {
-                pauseCarousel();
-                clearTimeout(touchTimeout);
-            }, { passive: true });
-            
-            wrapper.addEventListener('touchend', () => {
-                touchTimeout = setTimeout(resumeCarousel, 3000);
-            }, { passive: true });
+                });
+            });
 
             // Cleanup function
             carouselCleanup = () => {
-                wrapper.removeEventListener('mouseenter', pauseCarousel);
-                wrapper.removeEventListener('mouseleave', resumeCarousel);
-                clearTimeout(touchTimeout);
-                track.classList.remove('paused');
+                cleanupFunctions.forEach(fn => fn());
             };
         }
 
@@ -2161,7 +2234,6 @@
             closeSidebar();
             if (pageId) history.pushState(null, '', '#' + pageId);
             
-            // Re-init carousel if switching to about
             if (pageId === 'about') {
                 setTimeout(initInfiniteCarousel, 300);
             }
@@ -2281,11 +2353,10 @@
         // INIT
         // ============================================================
         loadData();
-        console.log('🚀 Portfolio v5.0 — Hard Skill Infinite Loop!');
-        console.log('📝 Linux dihilangkan dari Hard Skill');
-        console.log('🔄 Hard Skill berputar ke kiri terus-menerus (loop)');
+        console.log('🚀 Portfolio v6.0 — Hard Skill 2 Baris (Kiri & Kanan)!');
+        console.log('📝 About text di atas, skill di bawah');
+        console.log('🔄 Baris 1: ke KIRI | Baris 2: ke KANAN');
 
-        // Cleanup carousel on page unload
         window.addEventListener('beforeunload', function() {
             if (carouselCleanup) {
                 carouselCleanup();
